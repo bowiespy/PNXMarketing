@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PropNex Malaysia — Branding & Marketing Department Plan 2026–2028</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
+:root{
+  --sky:#00AEEF;--deep:#005686;--ink:#0F1419;--card:#1A1F2E;--card2:#232838;
+  --border:#2A3040;--text:#C8CDD5;--text2:#8892A0;--white:#F0F2F5;
+  --green:#10B981;--orange:#F59E0B;--red:#EF4444;--purple:#8B5CF6;--pink:#EC4899;
+  --r:14px;--sh:0 2px 12px rgba(0,0,0,.3);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--ink);color:var(--text);line-height:1.65;font-size:14px;-webkit-font-smoothing:antialiased}
+.pg{max-width:1200px;margin:0 auto;padding:0 32px}
+
+.tn{position:sticky;top:0;z-index:100;background:rgba(15,20,25,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 32px}
+.tn-i{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none;padding:10px 0}
+.tn-i::-webkit-scrollbar{display:none}
+.tn-i a{white-space:nowrap;font-size:11.5px;font-weight:600;color:var(--text2);padding:6px 12px;border-radius:20px;transition:.2s;text-decoration:none}
+.tn-i a:hover{color:var(--white);background:rgba(0,174,239,.12)}
+.tn-i .logo{font-weight:800;color:var(--sky);font-size:13px;margin-right:12px;flex-shrink:0;letter-spacing:.5px}
+
+.cover{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 30% 20%,rgba(0,86,134,.4) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(0,174,239,.2) 0%,transparent 50%),var(--ink)}
+.cover-g{position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='%23ffffff' stroke-width='.3' opacity='.04'/%3E%3C/svg%3E")}
+.cv{text-align:center;color:var(--white);z-index:2;position:relative;padding:40px}
+.cv .kicker{font-size:11px;letter-spacing:8px;text-transform:uppercase;color:var(--sky);opacity:.7;margin-bottom:28px}
+.cv h1{font-size:54px;font-weight:900;line-height:1.08}
+.cv h1 em{font-style:normal;color:var(--sky)}
+.cv .sub{font-size:17px;font-weight:300;color:var(--text2);margin:16px 0 36px}
+.cv .line{width:40px;height:3px;background:var(--sky);margin:0 auto 16px;border-radius:2px}
+.cv .meta{font-size:12px;color:var(--text2);opacity:.5}
+
+.sec{padding:80px 0}
+.slabel{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--sky);font-weight:800;margin-bottom:6px}
+h2{font-size:32px;font-weight:900;color:var(--white);line-height:1.15;margin-bottom:6px}
+h3{font-size:20px;font-weight:800;color:var(--white);margin:40px 0 16px}
+h4{font-size:15px;font-weight:700;color:var(--white);margin:0 0 6px}
+.ssub{font-size:15px;color:var(--text2);margin-bottom:48px;max-width:720px}
+.divider{width:100%;height:1px;background:var(--border);margin:64px 0}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:24px;box-shadow:var(--sh)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px}
+
+.stat{text-align:center;padding:28px 20px}
+.stat .s-top{border-top:3px solid var(--sky);padding-top:16px;margin:0 auto;width:60%}
+.stat .s-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text2);font-weight:700;margin-bottom:12px;line-height:1.4}
+.stat .s-before{font-size:12px;color:var(--text2);text-decoration:line-through;opacity:.6}
+.stat .s-val{font-size:36px;font-weight:900;color:var(--white);line-height:1;margin:6px 0}
+.stat .s-ctx{font-size:11px;color:var(--text2);line-height:1.4;margin-top:8px}
+.s-badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:10px;font-weight:700;background:rgba(16,185,129,.15);color:var(--green)}
+
+.org-top{display:flex;justify-content:center;margin-bottom:16px}
+.org-top-card{background:linear-gradient(135deg,var(--deep),#007AB8);border-radius:var(--r);padding:20px 40px;text-align:center;box-shadow:0 4px 20px rgba(0,86,134,.4)}
+.org-top-card .o-name{font-size:18px;font-weight:800;color:var(--white)}
+.org-top-card .o-role{font-size:12px;color:rgba(255,255,255,.6);margin-top:2px}
+.org-line{display:flex;justify-content:center;height:32px;position:relative}
+.org-line::after{content:'';position:absolute;width:2px;height:100%;background:var(--border)}
+.org-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.org-team{border-radius:var(--r);padding:24px 20px;border:1px solid var(--border);background:var(--card)}
+.org-team .ot-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:800;margin-bottom:4px}
+.org-team .ot-title{font-size:15px;font-weight:800;color:var(--white);margin-bottom:16px}
+.op{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border)}
+.op:last-child{border:none}
+.op-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.op .op-n{font-weight:600;font-size:12.5px;color:var(--white)}
+.op .op-r{font-size:11px;color:var(--text2)}
+.op.future{opacity:.45}
+.op.future .op-n::after{content:' — hiring';font-size:10px;color:var(--orange);font-weight:400}
+
+.vflow{display:flex;flex-direction:column;gap:0;margin:24px 0}
+.vflow-step{display:flex;gap:16px;align-items:flex-start;position:relative;padding-bottom:24px}
+.vflow-step:last-child{padding-bottom:0}
+.vflow-step::before{content:'';position:absolute;left:15px;top:36px;bottom:0;width:2px;background:var(--border)}
+.vflow-step:last-child::before{display:none}
+.vflow-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--white);flex-shrink:0;z-index:1}
+.vflow-body{flex:1;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 20px}
+.vflow-body h4{margin-bottom:4px}
+.vflow-body p{font-size:13px;color:var(--text2);margin:0}
+
+.pipe{display:flex;gap:2px;margin:24px 0;border-radius:var(--r);overflow:hidden}
+.pipe-node{flex:1;padding:18px 12px;text-align:center;background:var(--card);border:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;gap:4px}
+.pipe-node .pn-num{font-size:18px;font-weight:900;color:var(--sky)}
+.pipe-node .pn-t{font-size:11.5px;font-weight:700;color:var(--white);line-height:1.3}
+.pipe-node .pn-s{font-size:10px;color:var(--text2)}
+.pipe-node.hi{background:var(--deep);border-color:var(--deep)}
+.pipe-node.warn{background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.3)}
+.pipe-node.warn .pn-num{color:var(--orange)}
+.pipe-node.go{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.3)}
+.pipe-node.go .pn-num{color:var(--green)}
+
+.wcal{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--border);border-radius:var(--r);overflow:hidden;margin:24px 0}
+.wcal .dh{background:var(--deep);color:var(--white);padding:10px 6px;text-align:center;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.wcal .dc{background:var(--card);padding:10px 8px;min-height:110px;font-size:10.5px}
+.wcal .dc .ts{display:flex;gap:4px;margin-bottom:4px;padding:3px 5px;border-radius:5px;background:var(--card2);align-items:flex-start}
+.wcal .dc .ts .t{font-weight:700;color:var(--sky);white-space:nowrap;font-size:9.5px}
+.wcal .dc .ts .l{color:var(--text);line-height:1.3}
+.wcal .dc .ts.hi{background:rgba(0,174,239,.1);border:1px solid rgba(0,174,239,.15)}
+.wcal .dc .ts.yt{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.15)}
+
+.badge2{display:inline-block;padding:2px 6px;border-radius:4px;font-size:9px;font-weight:700}
+.b-sky{background:rgba(0,174,239,.15);color:var(--sky)}
+.b-grn{background:rgba(16,185,129,.15);color:var(--green)}
+.b-org{background:rgba(245,158,11,.15);color:var(--orange)}
+.b-red{background:rgba(239,68,68,.15);color:var(--red)}
+.b-pur{background:rgba(139,92,246,.15);color:var(--purple)}
+
+.cmp{border-radius:var(--r);padding:28px;border:1px solid var(--border)}
+.cmp h4{margin-bottom:12px}
+.cmp ul{list-style:none;padding:0}
+.cmp li{padding:5px 0 5px 20px;position:relative;font-size:13px;color:var(--text)}
+.cmp.bad{background:rgba(239,68,68,.05);border-color:rgba(239,68,68,.2)}
+.cmp.bad h4{color:var(--red)}
+.cmp.bad li::before{content:'✕';position:absolute;left:0;color:var(--red);font-weight:700;font-size:11px}
+.cmp.good{background:rgba(16,185,129,.05);border-color:rgba(16,185,129,.2)}
+.cmp.good h4{color:var(--green)}
+.cmp.good li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700;font-size:11px}
+
+.rule-g{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}
+.rcard{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:24px 20px;text-align:center}
+.rcard .rc-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.rcard .rc-icon svg{width:22px;height:22px;stroke:var(--white);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rcard .rc-t{font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px}
+.rcard .rc-d{font-size:12px;color:var(--text2);line-height:1.5}
+
+.gantt{overflow-x:auto;margin:24px 0;border-radius:var(--r);border:1px solid var(--border)}
+.gantt table{width:100%;border-collapse:collapse;min-width:1000px}
+.gantt th{background:var(--card2);color:var(--text2);padding:10px 8px;font-size:10px;text-align:center;font-weight:700;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border)}
+.gantt th:first-child{text-align:left;min-width:220px;padding-left:16px;color:var(--white)}
+.gantt td{padding:6px 4px;border-bottom:1px solid rgba(42,48,64,.5);font-size:11px;vertical-align:middle;text-align:center}
+.gantt td:first-child{text-align:left;padding-left:16px;font-weight:600;color:var(--white);background:var(--card)}
+.gantt .bar{height:18px;border-radius:4px;margin:1px 0}
+.bar-sky{background:linear-gradient(90deg,var(--sky),#5BC8F5)}
+.bar-grn{background:linear-gradient(90deg,var(--green),#6EE7B7)}
+.bar-org{background:linear-gradient(90deg,var(--orange),#FCD34D)}
+.bar-pur{background:linear-gradient(90deg,var(--purple),#C4B5FD)}
+.bar-pink{background:linear-gradient(90deg,var(--pink),#F9A8D4)}
+.bar-deep{background:linear-gradient(90deg,var(--deep),#0080B8)}
+.gantt .cont{font-size:9px;color:var(--text2)}
+
+.funnel{display:flex;flex-direction:column;align-items:center;gap:3px;margin:32px 0}
+.fstep{padding:16px 20px;text-align:center;color:var(--white);font-weight:700;font-size:13px;border-radius:8px}
+.fstep .fs{font-size:11px;font-weight:400;color:rgba(255,255,255,.65);margin-top:2px}
+.farr{color:var(--text2);font-size:12px}
+
+.cbox{border-radius:var(--r);padding:16px 20px;margin:20px 0;font-size:13px;display:flex;align-items:flex-start;gap:12px;line-height:1.5}
+.cbox.sky{background:rgba(0,174,239,.06);border:1px solid rgba(0,174,239,.15);color:var(--text)}
+.cbox.org{background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);color:var(--text)}
+.cbox strong{color:var(--white);flex-shrink:0}
+
+table.dtable{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+table.dtable thead th{background:var(--card2);color:var(--text2);padding:10px 14px;text-align:left;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid var(--border)}
+table.dtable tbody td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text)}
+table.dtable tbody tr:hover{background:rgba(0,174,239,.03)}
+table.dtable strong{color:var(--white)}
+
+.closing{text-align:center;padding:60px 40px;max-width:800px;margin:0 auto}
+.closing .q{font-size:20px;font-weight:300;line-height:1.8;color:var(--text)}
+.closing .q strong{color:var(--white);font-weight:600}
+.closing .q em{font-style:normal;color:var(--sky)}
+
+@media(max-width:900px){.g2,.g3,.g4{grid-template-columns:1fr}.org-row{grid-template-columns:1fr 1fr}.rule-g{grid-template-columns:1fr}.pipe{flex-direction:column}.sec{padding:48px 0}h2{font-size:26px}.cv h1{font-size:32px}.pg{padding:0 16px}}
+@media print{.tn{display:none}}
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+
+<nav class="tn"><div class="tn-i">
+<span class="logo">◆ PROPNEX MY</span>
+<a href="#score">Scorecard</a><a href="#team">Team</a><a href="#int-wf">Workflow</a><a href="#qc">QC</a><a href="#cal">Calendar</a><a href="#interdept">Inter-Dept</a><a href="#subsales">Sub-Sales</a><a href="#content">Content</a><a href="#roadmap">Roadmap</a><a href="#hiring">Hiring</a><a href="#budget">Budget</a><a href="#recruit">Recruitment</a><a href="#value">Value</a>
+</div></nav>
+
+<section class="cover"><div class="cover-g"></div><div class="cv">
+<div class="kicker">PropNex Malaysia</div>
+<h1>Branding &<br><em>Marketing</em> Department Plan</h1>
+<div class="sub">2026 → 2028 · System · Scale · Ecosystem</div>
+<div class="line"></div>
+<div class="meta">Prepared by Bowie · Branding & Marketing Manager · April 2026</div>
+</div></section>
+
+<!-- SCORECARD -->
+<section class="sec" id="score"><div class="pg">
+<div class="slabel">Performance — Sept 2024 → Apr 2026</div>
+<h2>Growth Scorecard</h2>
+<p class="ssub">18 months of results. Department built from zero — no prior team, no system, no tools.</p>
+<div class="g4" style="margin-bottom:16px">
+<div class="card stat"><div class="s-top" style="border-color:var(--sky)"><div class="s-label">Department<br>Headcount</div><div class="s-before">was 2 pax</div><div class="s-val">9</div><div class="s-ctx">No department existed before. Built team, structure, tools, and workflows from scratch.</div><div class="s-badge">+350%</div></div></div>
+<div class="card stat"><div class="s-top" style="border-color:var(--green)"><div class="s-label">Instagram<br>@propnex_malaysia</div><div class="s-before">was ~1,190</div><div class="s-val">2,300+</div><div class="s-ctx">Organic growth via consistent content strategy and social presence.</div><div class="s-badge">+93%</div></div></div>
+<div class="card stat"><div class="s-top" style="border-color:var(--orange)"><div class="s-label">Average Reel &<br>Video Views (IG/FB)</div><div class="s-before">was 100–200</div><div class="s-val">500–2K</div><div class="s-ctx">Top reels now consistently reach 1,500–2,000 views.</div><div class="s-badge">+400%</div></div></div>
+<div class="card stat"><div class="s-top" style="border-color:var(--purple)"><div class="s-label">YouTube Channel<br>Subscribers</div><div class="s-before">was ~200</div><div class="s-val">9,000+</div><div class="s-ctx">Revamped from file dump to content brand with 3 original series.</div><div class="s-badge">+4,400%</div></div></div>
+</div>
+<div class="g4">
+<div class="card stat"><div class="s-top" style="border-color:var(--sky)"><div class="s-label">Top YouTube<br>Single Video Views</div><div class="s-before">was double digits</div><div class="s-val">4,000+</div><div class="s-ctx">Previously no video exceeded 100 views.</div><div class="s-badge">Breakthrough</div></div></div>
+<div class="card stat"><div class="s-top" style="border-color:var(--green)"><div class="s-label">YouTube Original<br>Series Created</div><div class="s-before">was 0</div><div class="s-val">3</div><div class="s-ctx">BrewTalk · VibeSyne · Million Team Series</div><div class="s-badge">Created from 0</div></div></div>
+<div class="card stat"><div class="s-top" style="border-color:var(--orange)"><div class="s-label">Recruitment Leads<br>via Paid Ads</div><div class="s-before">was 0</div><div class="s-val">400+</div><div class="s-ctx">Meta lead ads. Agency → in-house transition.</div><div class="s-badge">Ad-Generated</div></div></div>
+<div class="card stat"><div class="s-top" style="border-color:var(--purple)"><div class="s-label">Task Management<br>System</div><div class="s-before">WhatsApp (200+ msgs/day)</div><div class="s-val" style="font-size:28px">ClickUp</div><div class="s-ctx">6 months to change habits. Creative request form + tracking.</div><div class="s-badge">Systematized</div></div></div>
+</div>
+</div></section>
+
+<!-- TEAM -->
+<section class="sec" id="team" style="padding-top:0"><div class="pg">
+<div class="divider"></div>
+<div class="slabel">Organization</div>
+<h2>Team Structure — 4 Units</h2>
+<p class="ssub">Content · Branding · Production · Operations — each with clear ownership.</p>
+<div class="org-top"><div class="org-top-card"><div class="o-name">Bowie</div><div class="o-role">Branding & Marketing Manager</div></div></div>
+<div class="org-line"></div>
+<div class="org-row">
+<div class="org-team" style="border-top:3px solid var(--sky)"><div class="ot-label" style="color:var(--sky)">Content Team</div><div class="ot-title">Content & Social Media</div><div class="op"><div class="op-dot" style="background:var(--sky)"></div><div><div class="op-n">EW</div><div class="op-r">Content Lead</div></div></div><div class="op"><div class="op-dot" style="background:var(--sky)"></div><div><div class="op-n">YC</div><div class="op-r">Content Creator</div></div></div><div class="op"><div class="op-dot" style="background:var(--sky)"></div><div><div class="op-n">ZY</div><div class="op-r">Content Creator</div></div></div><div class="op future"><div class="op-dot" style="background:var(--sky)"></div><div><div class="op-n">TBH</div><div class="op-r">Content Creator #3</div></div></div></div>
+<div class="org-team" style="border-top:3px solid var(--orange)"><div class="ot-label" style="color:var(--orange)">Branding Team</div><div class="ot-title">Brand, Creative & PR</div><div class="op"><div class="op-dot" style="background:var(--orange)"></div><div><div class="op-n">WJ</div><div class="op-r">Branding Executive</div></div></div><div class="op"><div class="op-dot" style="background:var(--orange)"></div><div><div class="op-n">Grace</div><div class="op-r">Designer · Creative Direction</div></div></div><div class="op future"><div class="op-dot" style="background:var(--orange)"></div><div><div class="op-n">TBH</div><div class="op-r">Marketing Exec (PR)</div></div></div></div>
+<div class="org-team" style="border-top:3px solid var(--green)"><div class="ot-label" style="color:var(--green)">Production Team</div><div class="ot-title">Video & Post-Production</div><div class="op"><div class="op-dot" style="background:var(--green)"></div><div><div class="op-n">PC</div><div class="op-r">Video Editor</div></div></div><div class="op future"><div class="op-dot" style="background:var(--green)"></div><div><div class="op-n">TBH</div><div class="op-r">Video Editor #2</div></div></div></div>
+<div class="org-team" style="border-top:3px solid var(--purple)"><div class="ot-label" style="color:var(--purple)">Operations</div><div class="ot-title">SOP, QC & Design Ops</div><div class="op"><div class="op-dot" style="background:var(--purple)"></div><div><div class="op-n">DL</div><div class="op-r">Dept Ops Lead · Copy & QC</div></div></div><div class="op"><div class="op-dot" style="background:var(--purple)"></div><div><div class="op-n">Penny</div><div class="op-r">Designer · Template & Adaptation</div></div></div></div>
+</div>
+
+<h3>Role Ownership Detail</h3>
+<table class="dtable">
+<thead><tr><th>Person</th><th>Team</th><th>Primary Responsibilities</th><th>Reports To</th></tr></thead>
+<tbody>
+<tr><td><strong>Bowie</strong></td><td>–</td><td>Dept strategy & direction · Performance tracking · Budget & vendor mgmt · Cross-dept policy · Team development · AI integration · Management reporting</td><td>CMO</td></tr>
+<tr><td><strong>EW</strong></td><td>Content</td><td>Lead daily content workflow · Supervise quality · Task delegation · Teach editing skills · Coordinate shoots · Manage posting schedule</td><td>Bowie</td></tr>
+<tr><td><strong>YC</strong></td><td>Content</td><td>Social content (IG/FB/TikTok) · Monthly recruitment series · Event coverage (pre/during/post) · Stories</td><td>EW → Bowie</td></tr>
+<tr><td><strong>ZY</strong></td><td>Content</td><td>YouTube: podcast BTS, highlight reels · Training event content (highlight 45-60s + 3× speaker 30s) · Video editing</td><td>EW → Bowie</td></tr>
+<tr><td><strong>WJ</strong></td><td>Branding</td><td>Company profile & recruitment kit (yearly, prep Oct→Jan) · Website mgmt & monthly updates · Homepage rotation quarterly · Award collateral · Office wallpapers (leaders bi-annual, millionaire yearly)</td><td>Bowie</td></tr>
+<tr><td><strong>Grace</strong></td><td>Branding</td><td>Creative direction · Key visuals · Social content design · Event creative (Convention 300-400, Gala 100+, NREA 30) · Brand-level design</td><td>Bowie</td></tr>
+<tr><td><strong>PC</strong></td><td>Production</td><td>All post-production · CN+EN subtitles · Logo (full white, right side) · Cover design (video 9:16, poster 3:4) · YouTube series · Convention personal videos</td><td>EW → Bowie</td></tr>
+<tr><td><strong>DL</strong></td><td>Operations</td><td><strong>Current:</strong> Copy, blog ×2/wk, grammar check | <strong>Adding:</strong> SOP documentation, guideline dev, checking system, dept rules. Blog aligned to content calendar themes.</td><td>Bowie</td></tr>
+<tr><td><strong>Penny</strong></td><td>Operations</td><td>Template work: Winning Monday 300+, sub-sales 100+, open house 20-30, project 10, transactors 10 — monthly. Training posters from templates.</td><td>Bowie</td></tr>
+</tbody>
+</table>
+</div></section>
+
+<!-- INTERNAL WORKFLOW -->
+<section class="sec" id="int-wf" style="padding-top:0"><div class="pg">
+<div class="divider"></div>
+<div class="slabel">Internal Operations</div>
+<h2>Internal Department Workflow</h2>
+<p class="ssub">Daily, weekly, and monthly rhythms that keep the machine running.</p>
+
+<h3>Daily Flow</h3>
+<div class="vflow">
+<div class="vflow-step"><div class="vflow-dot" style="background:var(--sky)">1</div><div class="vflow-body"><h4>9:30 AM — Daily Standup Report (WhatsApp Work Group)</h4><p><strong style="color:var(--white)">① Tasks completed yesterday</strong> — what got done<br><strong style="color:var(--white)">② Tasks planned today</strong> — committed deliverables<br><strong style="color:var(--white)">③ Stuck points</strong> — real blockers (manager follows up privately to uncover hidden issues)</p></div></div>
+<div class="vflow-step"><div class="vflow-dot" style="background:var(--sky)">2</div><div class="vflow-body"><h4>Content Posting — SOP Time Slots</h4><p>When content is scheduled: <strong style="color:var(--white)">9 AM / 12 PM / 3 PM / 6 PM</strong>. These are the designated windows, not daily quotas. Average: <strong style="color:var(--white)">3–5 social media posts per week</strong>.</p></div></div>
+<div class="vflow-step"><div class="vflow-dot" style="background:var(--sky)">3</div><div class="vflow-body"><h4>Post-Publish Actions (every post)</h4><p><strong style="color:var(--white)">① Blast to WhatsApp</strong> — agent leaders group + branch groups<br><strong style="color:var(--white)">② Share to IG + FB Stories</strong> immediately<br><strong style="color:var(--white)">③ If featuring someone</strong> → Instagram collab tag</p></div></div>
+<div class="vflow-step"><div class="vflow-dot" style="background:var(--sky)">4</div><div class="vflow-body"><h4>All Updates → ClickUp Comments</h4><p>Not WhatsApp. WhatsApp for ad-hoc only after ClickUp is updated.</p></div></div>
+</div>
+
+<h3>Weekly Flow</h3>
+<div class="vflow">
+<div class="vflow-step"><div class="vflow-dot" style="background:var(--deep)">M</div><div class="vflow-body"><h4>Monday AM — Weekly Report</h4><p>Last week recap + this week plan + today's todo</p></div></div>
+<div class="vflow-step"><div class="vflow-dot" style="background:var(--deep)">M</div><div class="vflow-body"><h4>Monday 10:30 AM — Dept Meeting + AI Session</h4><p>Review deliverables & metrics → This week's priorities → Blockers → New assignments → Weekly AI skill (one new tool/use case per week, starting Apr 6)</p></div></div>
+<div class="vflow-step"><div class="vflow-dot" style="background:var(--red)">T</div><div class="vflow-body"><h4>Thursday 8 PM — Podcast / YouTube</h4><p>Upload → publish BTS reel (9:16) to IG & FB → link to YouTube for full version</p></div></div>
+<div class="vflow-step"><div class="vflow-dot" style="background:var(--red)">F</div><div class="vflow-body"><h4>Friday 8 PM — Highlight Reel #1</h4><p>Same episode → IG & FB → push same YouTube link</p></div></div>
+<div class="vflow-step"><div class="vflow-dot" style="background:var(--red)">S</div><div class="vflow-body"><h4>Saturday 8 PM — Highlight Reel #2</h4><p>3 touchpoints → 1 YouTube episode over 3 days</p></div></div>
+</div>
+</div></section>
+
+<!-- QC -->
+<section class="sec" id="qc" style="padding-top:0"><div class="pg">
+<div class="divider"></div>
+<div class="slabel">Quality Control</div>
+<h2>QC Pipeline</h2>
+<div class="pipe">
+<div class="pipe-node hi"><div class="pn-num">01</div><div class="pn-t">Creator Self-Check</div><div class="pn-s">Subs CN+EN, logo, size, spelling, brand</div></div>
+<div class="pipe-node"><div class="pn-num">02</div><div class="pn-t">Content Lead Review</div><div class="pn-s">Quality & consistency via GDrive→ClickUp</div></div>
+<div class="pipe-node"><div class="pn-num">03</div><div class="pn-t">Grammar Check</div><div class="pn-s">DL: language only</div></div>
+<div class="pipe-node warn"><div class="pn-num">!</div><div class="pn-t">Data Verification</div><div class="pn-s">Requester's responsibility</div></div>
+<div class="pipe-node go"><div class="pn-num">✓</div><div class="pn-t">Go Live</div><div class="pn-s">Publish→Blast→Stories→Collab</div></div>
+</div>
+<div class="cbox org"><strong>Bottleneck Fix:</strong> Routine posts → self-publish after checklist. Campaign/high-vis → Lead review required. Cuts load ~60%.</div>
+</div></section>
+
+<!-- WEEKLY CAL -->
+<section class="sec" id="cal" style="padding-top:0"><div class="pg">
+<div class="divider"></div>
+<div class="slabel">Rhythm</div>
+<h2>Weekly Calendar</h2>
+<div class="wcal">
+<div class="dh">Mon</div><div class="dh">Tue</div><div class="dh">Wed</div><div class="dh">Thu</div><div class="dh">Fri</div><div class="dh">Sat</div><div class="dh">Sun</div>
+<div class="dc"><div class="ts"><span class="t">9:00</span><span class="l">Weekly report</span></div><div class="ts"><span class="t">9:30</span><span class="l">Standup</span></div><div class="ts hi"><span class="t">10:30</span><span class="l"><strong>Dept Meeting + AI</strong></span></div><div class="ts"><span class="t">SOP</span><span class="l">Posts if scheduled</span></div></div>
+<div class="dc"><div class="ts"><span class="t">9:30</span><span class="l">Standup</span></div><div class="ts"><span class="t">SOP</span><span class="l">Posts if scheduled</span></div><div class="ts"><span class="t">—</span><span class="l">Production</span></div></div>
+<div class="dc"><div class="ts"><span class="t">9:30</span><span class="l">Standup</span></div><div class="ts"><span class="t">SOP</span><span class="l">Posts if scheduled</span></div><div class="ts"><span class="t">—</span><span class="l">Production</span></div></div>
+<div class="dc"><div class="ts"><span class="t">9:30</span><span class="l">Standup</span></div><div class="ts"><span class="t">SOP</span><span class="l">Posts if scheduled</span></div><div class="ts yt"><span class="t">20:00</span><span class="l"><strong>Podcast/YT + BTS</strong></span></div></div>
+<div class="dc"><div class="ts"><span class="t">9:30</span><span class="l">Standup</span></div><div class="ts"><span class="t">SOP</span><span class="l">Posts if scheduled</span></div><div class="ts yt"><span class="t">20:00</span><span class="l"><strong>Reel #1</strong></span></div></div>
+<div class="dc"><div class="ts yt"><span class="t">20:00</span><span class="l"><strong>Reel #2</strong></span></div></div>
+<div class="dc" style="opacity:.3"><div class="ts"><span class="t">—</span><span class="l">Rest</span></div></div>
+</div>
+</div></section>
+
+<!-- INTER-DEPT -->
+<section class="sec" id="interdept" style="padding-top:0"><div class="pg">
+<div class="divider"></div>
+<div class="slabel">Cross-Department</div>
+<h2>Inter-Department Workflow & Rules</h2>
+<p class="ssub">We run on a system, not on favours.</p>
+<div class="g2" style="margin-bottom:32px">
+<div class="cmp bad"><h4>Before — No System</h4><ul><li>Direct WhatsApp tags to designers/copywriters</li><li>Private msgs: "really urgent please help"</li><li>5-day lead time ignored, always last minute</li><li>Poster in group "pls check" = expected QC</li><li>No data ownership → mistakes blamed on marketing</li><li>Think of idea → immediately want poster/video</li><li>No tracking, tasks fall through cracks</li></ul></div>
+<div class="cmp good"><h4>After — Systematic</h4><ul><li>All requests via ClickUp Creative Request Form</li><li>Auto-tracked task with brief + deadline</li><li>5 working days enforced — emergency needs Manager OK</li><li>Deliver through ClickUp with documentation</li><li>Data accuracy = requester's responsibility always</li><li>Max 2 revision rounds per request</li><li>Full audit trail: request→assign→deliver</li></ul></div>
+</div>
+
+<h3>Creative Request Workflow</h3>
+<div class="vflow">
+<div class="vflow-step"><div class="vflow-dot" style="background:var(--deep)">1</div><div class="vflow-body"><h4>Dept Fills ClickUp Creative Request Form</h4><p>Must include: what, purpose, audience, all data/info, reference, deadline (min 5 working days). <strong style="color:var(--white)">No form = no work.</strong></p></div></div>
+<div class="vflow-step"><div class="vflow-dot" style="background:var(--deep)">2</div><div class="vflow-body"><h4>Auto-Created Task → Content Lead / Manager Assigns</h4><p>Prioritized by workload, assigned to right person. Requester sees status in ClickUp.</p></div></div>
+<div class="vflow-step"><div class="vflow-dot" style="background:var(--sky)">3</div><div class="vflow-body"><h4>Work in Progress (within lead time)</h4><p>All updates in ClickUp comments. Not WhatsApp.</p></div></div>
+<div class="vflow-step"><div class="vflow-dot" style="background:var(--sky)">4</div><div class="vflow-body"><h4>Internal QC</h4><p>Self-check → Lead review → DL grammar. <strong style="color:var(--white)">We check: visual quality, brand, language, formatting.</strong></p></div></div>
+<div class="vflow-step"><div class="vflow-dot" style="background:var(--orange)">5</div><div class="vflow-body"><h4>Requester Verifies Data</h4><p><strong style="color:var(--orange)">Names, dates, numbers, transaction values, rankings — their responsibility. Post-publish data errors are on the requesting department.</strong></p></div></div>
+<div class="vflow-step"><div class="vflow-dot" style="background:var(--green)">6</div><div class="vflow-body"><h4>Approved → Deliver / Publish</h4><p>Delivered through ClickUp. Social content follows posting SOP.</p></div></div>
+</div>
+
+<h3>The 6 Rules</h3>
+<div class="rule-g">
+<div class="rcard"><div class="rc-icon" style="background:rgba(0,174,239,.1)"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div><div class="rc-t">ClickUp Form Only</div><div class="rc-d">No form = no work. No WhatsApp, no verbal, no "just quickly."</div></div>
+<div class="rcard"><div class="rc-icon" style="background:rgba(245,158,11,.1)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="rc-t">5-Day Lead Time</div><div class="rc-d">Minimum. Emergency = Manager approval + subject to workload.</div></div>
+<div class="rcard"><div class="rc-icon" style="background:rgba(239,68,68,.1)"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div><div class="rc-t">Data = Requester's Job</div><div class="rc-d">We check language & brand. Factual accuracy is theirs.</div></div>
+<div class="rcard"><div class="rc-icon" style="background:rgba(139,92,246,.1)"><svg viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg></div><div class="rc-t">Max 2 Revisions</div><div class="rc-d">Beyond 2 rounds = new request. Clear briefs upfront.</div></div>
+<div class="rcard"><div class="rc-icon" style="background:rgba(236,72,153,.1)"><svg viewBox="0 0 24 24"><path d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg></div><div class="rc-t">No Direct Assignment</div><div class="rc-d">Submit the form. We assign internally by workload.</div></div>
+<div class="rcard"><div class="rc-icon" style="background:rgba(16,185,129,.1)"><svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><div class="rc-t">Deliver via ClickUp</div><div class="rc-d">WhatsApp group ≠ delivery. ClickUp with docs and sign-off.</div></div>
+</div>
+</div></section>
+
+<!-- SUB-SALES -->
+<section class="sec" id="subsales" style="padding-top:0"><div class="pg">
+<div class="divider"></div>
+<div class="slabel">Specific Workflow</div>
+<h2>Marketing × Sub-Sales / Project Dept</h2>
+<p class="ssub">Highest-volume cross-dept collaboration. Needs its own defined flow.</p>
+<table class="dtable">
+<thead><tr><th>Request Type</th><th>Volume / Month</th><th>Process</th><th>Owner</th></tr></thead>
+<tbody>
+<tr><td><strong>Done Deal Posters</strong></td><td>100+</td><td>Template. Submit agent name, photo, project, value via form. Penny applies.</td><td>Penny</td></tr>
+<tr><td><strong>Open House Posters</strong></td><td>20–30</td><td>Template. Project, date, location, agent details.</td><td>Penny</td></tr>
+<tr><td><strong>Project Done Deal</strong></td><td>~10</td><td>Template. Project-specific format.</td><td>Penny</td></tr>
+<tr><td><strong>Top Transactors</strong></td><td>~10</td><td>Template. Rankings provided by project dept.</td><td>Penny</td></tr>
+<tr><td><strong>Training Posters</strong></td><td>Per event</td><td>ClickUp request. Template or custom by event level.</td><td>Penny / Grace</td></tr>
+<tr><td><strong>Project Briefing Materials</strong></td><td>Ad-hoc</td><td>Custom request. 5-day lead time.</td><td>Assigned by Lead</td></tr>
+</tbody>
+</table>
+
+<h3>Collaboration Flow</h3>
+<div class="vflow">
+<div class="vflow-step"><div class="vflow-dot" style="background:var(--orange)">1</div><div class="vflow-body"><h4>Sub-Sales / Project Submits ClickUp Form</h4><p>All data must be <strong style="color:var(--white)">complete and verified before submission</strong>. Incomplete = returned to requester.</p></div></div>
+<div class="vflow-step"><div class="vflow-dot" style="background:var(--orange)">2</div><div class="vflow-body"><h4>Penny Produces Using Templates</h4><p>Pre-built Canva templates. This is how 400+ posters get done monthly. Templates maintained by Grace.</p></div></div>
+<div class="vflow-step"><div class="vflow-dot" style="background:var(--orange)">3</div><div class="vflow-body"><h4>Sub-Sales / Project Verifies Data</h4><p><strong style="color:var(--orange)">They check all names, numbers, values, rankings. We check visual + spelling only.</strong></p></div></div>
+<div class="vflow-step"><div class="vflow-dot" style="background:var(--green)">4</div><div class="vflow-body"><h4>Approved → Social + WhatsApp Blast</h4><p>Published on social media + blasted to agent leaders & branch groups. Achiever posters shared to individual agents.</p></div></div>
+</div>
+<div class="cbox sky"><strong>Volume context:</strong> Penny alone handles 400+ template posters monthly. System only works if: templates pre-built, data comes complete, and we're not asked to verify facts for 400+ pieces.</div>
+</div></section>
+
+<!-- CONTENT -->
+<section class="sec" id="content" style="padding-top:0"><div class="pg">
+<div class="divider"></div>
+<div class="slabel">Content Strategy</div>
+<h2>Unified Content System</h2>
+<p class="ssub">2026 shift: every output in a period reinforces the same narrative. Blog, video, poster, social — all aligned.</p>
+<div class="g3">
+<div class="card" style="border-top:3px solid var(--deep);text-align:center;padding:28px"><div style="width:48px;height:48px;border-radius:12px;background:rgba(0,86,134,.15);display:flex;align-items:center;justify-content:center;margin:0 auto 14px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div><h4>Branding</h4><div style="font-size:12px;color:var(--text2);margin-top:6px">Company image · Culture · Leadership · CSR · Announcements</div><div class="badge2 b-sky" style="margin-top:10px">@propnex_malaysia</div></div>
+<div class="card" style="border-top:3px solid var(--sky);text-align:center;padding:28px"><div style="width:48px;height:48px;border-radius:12px;background:rgba(0,174,239,.15);display:flex;align-items:center;justify-content:center;margin:0 auto 14px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"/></svg></div><h4>Recruitment</h4><div style="font-size:12px;color:var(--text2);margin-top:6px">Monthly series · Achiever spotlights · Career testimonials · Lead ads</div><div class="badge2 b-sky" style="margin-top:10px">@propnex_malaysia</div></div>
+<div class="card" style="border-top:3px solid var(--green);text-align:center;padding:28px"><div style="width:48px;height:48px;border-radius:12px;background:rgba(16,185,129,.15);display:flex;align-items:center;justify-content:center;margin:0 auto 14px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div><h4>Training</h4><div style="font-size:12px;color:var(--text2);margin-top:6px">Highlights · Speaker clips · PPT sharing · Knowledge</div><div class="badge2 b-grn" style="margin-top:10px">PropNex REN page</div></div>
+</div>
+</div></section>
+
+<!-- ROADMAP -->
+<section class="sec" id="roadmap" style="padding-top:0"><div class="pg">
+<div class="divider"></div>
+<div class="slabel">Strategy</div>
+<h2>3-Year Roadmap</h2>
+<p class="ssub">Quarterly breakdown of every initiative.</p>
+<div class="gantt"><table>
+<thead><tr><th>Initiative</th><th>Q2'26</th><th>Q3'26</th><th>Q4'26</th><th>Q1'27</th><th>Q2'27</th><th>Q3'27</th><th>Q4'27</th><th>H1'28</th><th>H2'28</th></tr></thead>
+<tbody>
+<tr><td>SOP Documentation</td><td><div class="bar bar-sky"></div></td><td><div class="bar bar-sky"></div></td><td class="cont">maintain</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td></tr>
+<tr><td>ClickUp Full Adoption</td><td><div class="bar bar-sky"></div></td><td><div class="bar bar-sky"></div></td><td class="cont">optimized</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td></tr>
+<tr><td>Unified Content Calendar</td><td><div class="bar bar-sky"></div></td><td><div class="bar bar-sky"></div></td><td><div class="bar bar-sky"></div></td><td class="cont">running</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td></tr>
+<tr><td>Weekly AI Training</td><td><div class="bar bar-pur"></div></td><td><div class="bar bar-pur"></div></td><td><div class="bar bar-pur"></div></td><td><div class="bar bar-pur"></div></td><td class="cont">ongoing</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td></tr>
+<tr><td>DL → Dept Ops Lead Transition</td><td><div class="bar bar-pur"></div></td><td><div class="bar bar-pur"></div></td><td><div class="bar bar-pur"></div></td><td class="cont">done</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td></tr>
+<tr><td>Budget Framework & ROI</td><td><div class="bar bar-org"></div></td><td><div class="bar bar-org"></div></td><td><div class="bar bar-org"></div></td><td><div class="bar bar-org"></div></td><td class="cont">quarterly</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td></tr>
+<tr><td>CSR Campaigns</td><td></td><td><div class="bar bar-grn"></div></td><td><div class="bar bar-grn"></div></td><td><div class="bar bar-grn"></div></td><td><div class="bar bar-grn"></div></td><td class="cont">regular</td><td class="cont">→</td><td class="cont">signature</td><td class="cont">→</td></tr>
+<tr><td>PR & Media Program</td><td></td><td><div class="bar bar-org"></div></td><td><div class="bar bar-org"></div></td><td><div class="bar bar-org"></div></td><td><div class="bar bar-org"></div></td><td><div class="bar bar-org"></div></td><td class="cont">mature</td><td class="cont">→</td><td class="cont">→</td></tr>
+<tr><td>PropNex Friends Program</td><td></td><td><div class="bar bar-pink"></div></td><td><div class="bar bar-pink"></div></td><td><div class="bar bar-pink"></div></td><td><div class="bar bar-pink"></div></td><td class="cont">scale</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td></tr>
+<tr><td>TikTok & XHS Launch</td><td></td><td></td><td><div class="bar bar-deep"></div></td><td><div class="bar bar-deep"></div></td><td><div class="bar bar-deep"></div></td><td><div class="bar bar-deep"></div></td><td class="cont">cadence</td><td class="cont">→</td><td class="cont">→</td></tr>
+<tr><td>LinkedIn Thought Leadership</td><td></td><td></td><td></td><td><div class="bar bar-pur"></div></td><td><div class="bar bar-pur"></div></td><td><div class="bar bar-pur"></div></td><td class="cont">active</td><td class="cont">→</td><td class="cont">→</td></tr>
+<tr><td>SEO & Blog Strategy</td><td></td><td></td><td><div class="bar bar-sky"></div></td><td><div class="bar bar-sky"></div></td><td><div class="bar bar-sky"></div></td><td class="cont">organic</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td></tr>
+<tr><td>Sub-Team Lead Development</td><td><div class="bar bar-pur"></div></td><td><div class="bar bar-pur"></div></td><td><div class="bar bar-pur"></div></td><td><div class="bar bar-pur"></div></td><td><div class="bar bar-pur"></div></td><td><div class="bar bar-pur"></div></td><td class="cont">independent</td><td class="cont">→</td><td class="cont">→</td></tr>
+<tr><td>Recruitment Pipeline</td><td><div class="bar bar-grn"></div></td><td><div class="bar bar-grn"></div></td><td class="cont">operate</td><td class="cont">→</td><td class="cont">optimize</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td></tr>
+<tr><td>Convention Video System (Slack)</td><td></td><td></td><td><div class="bar bar-deep"></div></td><td class="cont">eval</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td><td class="cont">→</td></tr>
+</tbody>
+</table></div>
+
+<h3>Year-by-Year Focus</h3>
+<div class="g3" style="margin-top:16px">
+<div class="card" style="border-top:3px solid var(--sky)"><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--sky);font-weight:800;margin-bottom:6px">Year 1 — 2026</div><h4>System First</h4><p style="font-size:12px;margin-top:8px">All SOPs documented. ClickUp fully adopted for planning + ideation. Unified content calendar. DL transitions to Ops Lead. Grace establishes creative direction. AI sessions weekly. Budget framework proposed. CSR starts Q3. PropNex Friends pilot Q3-Q4. PR hire Q3. Recruitment pipeline built. Team → 10–11.</p><div style="margin-top:12px"><span class="badge2 b-sky">IG 5K+</span> <span class="badge2 b-red">YT 15K+</span></div></div>
+<div class="card" style="border-top:3px solid var(--green)"><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--green);font-weight:800;margin-bottom:6px">Year 2 — 2027</div><h4>Amplify & Expand</h4><p style="font-size:12px;margin-top:8px">TikTok + XHS launched. LinkedIn for bosses. SEO as lead gen. PR pipeline active — appearances, features. CSR regular. PropNex Friends 10-15 partners. Campaign ROI tracking. Sub-team leads developing. Mktg Ops hired Q1. Team → 12–13.</p><div style="margin-top:12px"><span class="badge2 b-sky">IG 10K+</span> <span class="badge2 b-red">YT 30K+</span> <span class="badge2 b-pur">TikTok 5K+</span></div></div>
+<div class="card" style="border-top:3px solid var(--purple)"><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--purple);font-weight:800;margin-bottom:6px">Year 3 — 2028</div><h4>Full Ecosystem</h4><p style="font-size:12px;margin-top:8px">6-platform presence. YT 5-figure views. PR mature. CSR signature. Mktg ops managing budget & ROI. Independent sub-teams. PropNex Friends scaled. Dept recognized as profit contributor. ~15 pax.</p><div style="margin-top:12px"><span class="badge2 b-sky">Department → Division</span></div></div>
+</div>
+</div></section>
+
+<!-- HIRING -->
+<section class="sec" id="hiring" style="padding-top:0"><div class="pg">
+<div class="divider"></div>
+<div class="slabel">Team Growth</div>
+<h2>Hiring Roadmap</h2>
+<table class="dtable">
+<thead><tr><th>Timeline</th><th>Role</th><th>Team</th><th>Justification</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td><strong>Q2 2026</strong></td><td>Content Creator #3</td><td>Content</td><td>Incoming. 2 creators can't sustain daily posting + events + recruitment series.</td><td><span class="badge2 b-red">Confirmed</span></td></tr>
+<tr><td><strong>Q2 2026</strong></td><td>Video Editor #2</td><td>Production</td><td>PC sole editor for 3 YT series + training + recruitment + convention. At capacity.</td><td><span class="badge2 b-red">Urgent</span></td></tr>
+<tr><td><strong>Q3 2026</strong></td><td>Marketing Exec (PR)</td><td>Branding</td><td>PR/media unserved. Boss appearances, industry features, CSR coordination.</td><td><span class="badge2 b-org">High</span></td></tr>
+<tr><td><strong>Q1 2027</strong></td><td>Marketing Ops Coordinator</td><td>Operations</td><td>Budget, analytics, vendor, reporting. Currently on Bowie's plate.</td><td><span class="badge2 b-sky">Planned</span></td></tr>
+<tr><td><strong>Q3 2027</strong></td><td>Content/Designer (flex)</td><td>TBD</td><td>Based on TikTok/XHS data from H1 2027.</td><td><span class="badge2 b-sky">Planned</span></td></tr>
+<tr><td><strong>2028</strong></td><td>+1–2 (TBD)</td><td>TBD</td><td>Based on Year 2 data. Likely PR/comms + content.</td><td><span class="badge2 b-pur">Data-driven</span></td></tr>
+</tbody>
+</table>
+</div></section>
+
+<!-- BUDGET -->
+<section class="sec" id="budget" style="padding-top:0"><div class="pg">
+<div class="divider"></div>
+<div class="slabel">Budget</div>
+<h2>Budget Framework Proposal</h2>
+<div class="cbox org" style="margin-bottom:24px"><strong>Current:</strong> No annual allocation. Ad-hoc approval. No ROI tracking. Limits planning.</div>
+<div class="g3">
+<div class="card" style="text-align:center;padding:24px"><div style="width:40px;height:40px;border-radius:10px;background:rgba(0,174,239,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2"><path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/><path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg></div><h4>Digital Ads</h4><p style="font-size:12px;color:var(--text2)">Meta, Google, boosted posts. CPL & conversion tracked.</p></div>
+<div class="card" style="text-align:center;padding:24px"><div style="width:40px;height:40px;border-radius:10px;background:rgba(139,92,246,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37 1 .608 2.296.07 2.573-1.066z"/><circle cx="12" cy="12" r="3"/></svg></div><h4>Tools & Software</h4><p style="font-size:12px;color:var(--text2)">ClickUp, Canva, Adobe, AI, scheduling, stock.</p></div>
+<div class="card" style="text-align:center;padding:24px"><div style="width:40px;height:40px;border-radius:10px;background:rgba(16,185,129,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg></div><h4>Production</h4><p style="font-size:12px;color:var(--text2)">Equipment, external crew, convention, props.</p></div>
+<div class="card" style="text-align:center;padding:24px"><div style="width:40px;height:40px;border-radius:10px;background:rgba(245,158,11,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V9a2 2 0 012-2h2a2 2 0 012 2v9a2 2 0 01-2 2h-2z"/></svg></div><h4>PR & Partnerships</h4><p style="font-size:12px;color:var(--text2)">Media, collabs, PropNex Friends.</p></div>
+<div class="card" style="text-align:center;padding:24px"><div style="width:40px;height:40px;border-radius:10px;background:rgba(236,72,153,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div><h4>Training & Dev</h4><p style="font-size:12px;color:var(--text2)">Courses, conferences, certifications.</p></div>
+<div class="card" style="text-align:center;padding:24px"><div style="width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;margin:0 auto 12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text2)" stroke-width="2"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><h4>10% Contingency</h4><p style="font-size:12px;color:var(--text2)">Buffer for unplanned needs.</p></div>
+</div>
+<div class="cbox sky" style="margin-top:20px"><strong>Next:</strong> Detailed annual budget proposal by Q3 2026 with quarterly review, benchmarks, and projected ROI.</div>
+</div></section>
+
+<!-- RECRUITMENT (SEPARATE) -->
+<section class="sec" id="recruit" style="padding-top:0;border-top:2px solid var(--orange)"><div class="pg">
+<div style="background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);border-radius:var(--r);padding:20px 24px;margin-bottom:40px">
+<h4 style="color:var(--orange);margin-bottom:6px">Separate Proposal — Not Under Marketing Department</h4>
+<p style="font-size:13px;margin:0">Recruitment is not part of the Branding & Marketing team. However, because marketing controls the ad pipeline generating recruitment leads, and the previous handler is leaving with no documented system, I am proposing to take over restructuring this function. This is a strategic decision for company growth — the investment in ads must actually convert to hires. I will oversee the system design and team setup while keeping it operationally independent from marketing.</p>
+</div>
+<div class="slabel">Separate Proposal</div>
+<h2>Recruitment Pipeline Restructuring</h2>
+<p class="ssub">From "run ads and hope" to a system with tracking at every stage.</p>
+
+<h3>Current Problems</h3>
+<div class="g2" style="margin-bottom:32px">
+<div class="card"><h4 style="color:var(--red)">No Documented Flow</h4><p style="font-size:13px">Leads come in → one person contacts them → messy follow-up → no tracking → if she's absent, pipeline is invisible. She is now leaving.</p></div>
+<div class="card"><h4 style="color:var(--red)">No Conversion Tracking</h4><p style="font-size:13px">400+ leads but no data on: CPL, response rate, interview rate, conversion rate, time-to-close, which campaigns perform. Money spent blind.</p></div>
+<div class="card"><h4 style="color:var(--red)">No Nurturing</h4><p style="font-size:13px">Leads who say "not now" are lost. No follow-up pipeline, no monthly touchpoints. Every lead is one-shot.</p></div>
+<div class="card"><h4 style="color:var(--red)">Replacement ≠ Solution</h4><p style="font-size:13px">Hiring another person just to answer calls doesn't fix the structural problem. Need a system + team with broader scope to justify headcount.</p></div>
+</div>
+
+<h3>Proposed Funnel</h3>
+<div class="funnel">
+<div class="fstep" style="width:92%;background:var(--deep)">Meta Lead Ads + Engagement Ads (run by Marketing Dept)<div class="fs">Ads, targeting, creative — handled by marketing. Generates top of funnel.</div></div>
+<div class="farr">▼</div>
+<div class="fstep" style="width:80%;background:#006DA0">Leads Captured in CRM / Tracking System<div class="fs">Auto-logged: source, date, campaign, status. Every lead visible & accountable.</div></div>
+<div class="farr">▼</div>
+<div class="fstep" style="width:68%;background:#0088C4">Recruitment Exec Contacts Within 24 Hours<div class="fs">Call/WhatsApp — qualify interest: Interested / Not Ready / No Response</div></div>
+<div class="farr">▼</div>
+<div class="fstep" style="width:56%;background:var(--sky)">Interested → Schedule Interview with Leader<div class="fs">CMO assigns to appropriate team leader for interview</div></div>
+<div class="farr">▼</div>
+<div class="fstep" style="width:44%;background:var(--green)">Accept → Onboard → Track Full Conversion<div class="fs">Measure: cost-per-hire, conversion rate, time-to-join, best campaigns</div></div>
+</div>
+<div class="g2" style="margin-top:12px">
+<div class="card" style="border-left:3px solid var(--orange)"><h4 style="color:var(--orange)">Not Ready → Nurture Pipeline</h4><p style="font-size:13px">Monthly touchpoint. Share PropNex culture & success content. Re-enter funnel when ready.</p></div>
+<div class="card" style="border-left:3px solid var(--text2)"><h4>No Response → 3-Attempt Protocol</h4><p style="font-size:13px">3 attempts over 2 weeks → archive. Quarterly mass re-engagement campaign.</p></div>
+</div>
+
+<h3>Proposed Team (Max 3 pax)</h3>
+<table class="dtable">
+<thead><tr><th>Role</th><th>Responsibilities</th><th>Phase</th></tr></thead>
+<tbody>
+<tr><td><strong>Recruitment & BD Lead</strong></td><td>Pipeline management · Recruitment plan & event ideation · Conversion tracking & weekly reporting · PropNex Friends coordination · Partnership outreach</td><td><span class="badge2 b-red">Phase 1 — Q2 2026</span></td></tr>
+<tr><td><strong>Recruitment Executive</strong></td><td>Daily lead follow-up within 24hrs · Interview scheduling · CRM management · Candidate nurturing · 3-attempt protocol</td><td><span class="badge2 b-red">Phase 1 — Q2 2026</span></td></tr>
+<tr><td><strong>BD / Partnerships Exec</strong></td><td>PropNex Friends development & management · Loyalty program ops · External collaborations · Recruitment event support · CSR coordination</td><td><span class="badge2 b-org">Phase 2 — Q4 2026</span></td></tr>
+</tbody>
+</table>
+<div class="cbox sky" style="margin-top:20px"><strong>Why combine recruitment + BD:</strong> By adding PropNex Friends, partner outreach, and recruitment events, this team becomes a connection & relationship unit — not just a call center. Headcount is justified by broader scope. BD exec also supports CSR, tying into marketing roadmap.</div>
+
+<h3>PropNex Friends — Phase Plan</h3>
+<div class="g2">
+<div class="card"><h4>Phase 1 — Q3-Q4 2026</h4><p style="font-size:13px">Identify 5-8 pilot partners (lifestyle, F&B, wellness, financial). Build digital benefits page. Promote via social + agent channels. Marketing supports with content.</p></div>
+<div class="card"><h4>Phase 2 — 2027</h4><p style="font-size:13px">Scale to 10-15 partners. Dedicated BD exec manages relationships. Official program identity. Tie into recruitment events and brand campaigns. Track engagement.</p></div>
+</div>
+</div></section>
+
+<!-- VALUE -->
+<section class="sec" id="value" style="padding-top:0;background:linear-gradient(180deg,var(--ink),#0A1628)"><div class="pg">
+<div class="divider"></div>
+<div class="slabel" style="color:rgba(255,255,255,.3)">The Bottom Line</div>
+<h2>What This Department Delivers</h2>
+<div class="g2" style="margin:40px 0">
+<div class="card" style="background:rgba(0,174,239,.06);border-color:rgba(0,174,239,.15)"><h4 style="margin-bottom:16px">Built in 18 Months</h4><div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
+<div style="display:flex;gap:10px;align-items:center"><div style="width:6px;height:6px;border-radius:50%;background:var(--sky);flex-shrink:0"></div>2 → 9 people — department from zero</div>
+<div style="display:flex;gap:10px;align-items:center"><div style="width:6px;height:6px;border-radius:50%;background:var(--sky);flex-shrink:0"></div>93% IG · 4,400% YouTube growth</div>
+<div style="display:flex;gap:10px;align-items:center"><div style="width:6px;height:6px;border-radius:50%;background:var(--sky);flex-shrink:0"></div>3 YouTube series — content brand</div>
+<div style="display:flex;gap:10px;align-items:center"><div style="width:6px;height:6px;border-radius:50%;background:var(--sky);flex-shrink:0"></div>400+ recruitment leads — in-house ads</div>
+<div style="display:flex;gap:10px;align-items:center"><div style="width:6px;height:6px;border-radius:50%;background:var(--sky);flex-shrink:0"></div>ClickUp adopted — 6 months habit change</div>
+<div style="display:flex;gap:10px;align-items:center"><div style="width:6px;height:6px;border-radius:50%;background:var(--sky);flex-shrink:0"></div>Weekly AI training — team current</div>
+<div style="display:flex;gap:10px;align-items:center"><div style="width:6px;height:6px;border-radius:50%;background:var(--sky);flex-shrink:0"></div>CI guide across all touchpoints</div>
+</div></div>
+<div class="card" style="background:rgba(0,174,239,.06);border-color:rgba(0,174,239,.15)"><h4 style="margin-bottom:16px">Building Next</h4><div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
+<div style="display:flex;gap:10px;align-items:center"><div style="width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0"></div>Documented SOPs — runs on system not memory</div>
+<div style="display:flex;gap:10px;align-items:center"><div style="width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0"></div>Cross-dept rules protecting quality</div>
+<div style="display:flex;gap:10px;align-items:center"><div style="width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0"></div>CSR campaigns Q3 2026</div>
+<div style="display:flex;gap:10px;align-items:center"><div style="width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0"></div>PR & media pipeline Q4 2026</div>
+<div style="display:flex;gap:10px;align-items:center"><div style="width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0"></div>PropNex Friends pilot Q3 2026</div>
+<div style="display:flex;gap:10px;align-items:center"><div style="width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0"></div>6-platform expansion 2027</div>
+<div style="display:flex;gap:10px;align-items:center"><div style="width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0"></div>Budget ownership with ROI tracking</div>
+<div style="display:flex;gap:10px;align-items:center"><div style="width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0"></div>15-person division with sub-team leads 2028</div>
+</div></div>
+</div>
+
+<div class="closing">
+<div class="q">"I'm not building a team that waits for instructions.<br>I'm building a <strong>system</strong> that <em>grows with the company</em> —<br>so when PropNex Malaysia scales,<br>this department is already <em>ready.</em>"</div>
+<div style="width:40px;height:2px;background:var(--sky);margin:28px auto;opacity:.4"></div>
+<div style="font-size:12px;color:var(--text2);opacity:.4">Bowie · Branding & Marketing Manager · April 2026</div>
+</div>
+</div></section>
+
+<div style="padding:16px;text-align:center;font-size:10px;color:rgba(255,255,255,.12)">PropNex Malaysia · Branding & Marketing Department Plan 2026–2028 · Confidential</div>
+</body>
+</html>
