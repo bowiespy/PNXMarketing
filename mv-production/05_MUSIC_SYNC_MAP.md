@@ -1,68 +1,68 @@
-# 05｜音樂對位表 (Music Sync Map)
+# 05｜音樂對位表 (Music Sync Map) — 含完整歌詞
 
-> 歌曲：**《Sharpen the Wing》**　長度 **153.42s (2:33)**　速度 **~143.6 BPM**　結構 **雙副歌**
-> 來源分析：實際音訊能量包絡 + 和聲結構分段（librosa）。
-> ⚠️ 歌曲檔未內嵌歌詞。**請提供正式歌詞文字檔**，我會把下表的「歌詞 (lyric)」欄補成逐句精確卡點。
-
----
-
-## 1. 歌曲結構地圖（音訊實測）
-
-| 段落 | 時間碼 | 能量 (0-1) | 特徵 | 對應環節 |
-|------|--------|-----------|------|----------|
-| 前奏 Intro | 0:00–0:16 | 0.16↗0.40 | 漸起、單薄 | ① 火種 |
-| 主歌 1a Verse | 0:16–0:30 | ~0.43 | 人聲進、中等 | ② 留下來的人 |
-| 主歌 1b Verse | 0:30–0:44 | ~0.43↗ | 鋪陳、pre-chorus build | ③ 沒人看好 |
-| **副歌 1 Chorus** | 0:44–1:15 | **0.54→0.66** | **第一能量高峰** | ④ 不停前進 |
-| 主歌 2 Verse | 1:15–1:46 | ~0.42 | 能量回落 | ⑤ 建立 |
-| 橋段 Bridge | 1:46–1:57 | 0.42↗0.46 | 收束、蓄勢 | ⑥ 複製這束光 |
-| **大副歌 Final Chorus** | 1:57–2:25 | **0.61→0.67** | **全片最高峰** | ⑦ 遍佈全馬 |
-| 尾奏 Outro | 2:25–2:33 | 0.27→0 | 收尾、淡出 | ⑧ 改變生態 |
+> 歌曲：**《Sharpen the Wing》**（PropNex 主題曲）　長度 **153.42s (2:33)**　速度 **~143.6 BPM**　結構：雙副歌
+> 來源：實際音訊能量包絡 + 和聲結構分段 (librosa) + 用戶提供完整歌詞。
+> ⚠️ 下表時間為「音訊能量分段」估算；**逐字 timecode 需在 animatic 階段用波形對齊**鎖死（誤差≤2-3幀）。
 
 ---
 
-## 2. 逐環節對位表（畫面 × 音樂 × 情緒）
+## 1. 歌曲結構 × 環節 × 歌詞
 
-| # | 時間 | 音樂事件 | 畫面卡點 (visual beat) | 情緒 |
-|---|------|----------|----------------------|------|
-| ① | 0:00 | 第一個音 | 光點隨第一個音亮起（呼吸） | 0→希望 |
-| ① | 0:13 | 前奏推進 | 光鳥起飛、點亮第一扇窗 | 希望↗ |
-| ② | 0:16 | 人聲進場 | 阿浩抬頭、光落入室內 | 心動 |
-| ② | 0:26 | 旋律小高點 | 67 人微光骨牌式亮起 | 凝聚 |
-| ③ | 0:30 | 轉沉 | 雷雨切入、撐傘人潮 | 孤獨↘ |
-| ③ | 0:39 | pre-chorus build | 兩盞燈同時轉亮、鼓點漸強 | 倔強↗ |
-| ④ | **0:44** | **副歌落點** | 雲開、第一道神光劈入（最強卡點） | 爆發 |
-| ④ | 0:58 | 副歌第二句 | 兩盞燈合而為一 | 並肩 |
-| ④ | 1:10 | 副歌收尾 | 合一之燈成為夜空最亮點、crane out | 高揚 |
-| ⑤ | 1:15 | 主歌2、能量落 | 白板/種子，燈塔與樹開始長 | 踏實 |
-| ⑤ | 1:37 | 旋律推進 | 燈塔光束第一次射向城市 | 成形 |
-| ⑥ | **1:46** | **橋段** | 慢動作點燈接力（屏息） | 感動 |
-| ⑥ | 1:53 | bridge build | 燈火幾何級擴散、鏡頭上升 | 蓄勢↗ |
-| ⑦ | **1:57** | **大副歌落點** | 鼓點落、穿雲、萬家燈火接連亮（最強卡點） | 澎湃 |
-| ⑦ | 2:08 | 副歌高句 | 「67→2000」光粒子寫在天空 | 自豪 |
-| ⑦ | 2:14 | 副歌最高 | 衛星視角、全馬燈海覆蓋 | 巔峰 |
-| ⑦ | 2:20 | 副歌收 | 俯衝回人群、主角在中央 | 圓滿 |
-| ⑧ | 2:25 | 尾奏 | 燈海凝成北極星升空 | 昇華 |
-| ⑧ | 2:31 | 最後一個音 | 主角遞光向鏡頭→定格＋Slogan | 餘韻 |
+| # | 時間 | 段落 | 能量 | 歌詞 | 環節 |
+|---|------|------|------|------|------|
+| ① | 0:00–0:16 | Intro | 低↗ | Yo! Shift the gear, we're moving in! / The PropNex life, let the growth begin! / Forget the noise, forget the fake, / We're building up for all that's at stake! | 火種・開場 |
+| ② | 0:16–0:30 | Verse 1a | 中 | No fancy filters on our day-to-day, / Real life results in a better way. / Sales skills stacking, yeah we're learning deep, / While the rest of the world is fast asleep. | 日常打拼 |
+| ③ | 0:30–0:44 | Verse 1b | 中↗ | Project, Sub-sales, yeah we're on the grind, / Leaving all the hollow status far behind. / You want the top? Then you've got to learn, / Every single chapter is a bridge you burn. | 沒人看好 |
+| ④ | 0:44–1:15 | **Chorus 1（峰）** | 高 | We don't just rise, we evolve, we create! / Turning the Good to the legendary Great! / Don't look at the small, gotta sharpen the wing! / When you look at the vision, you're gotta Think Big! / Yeah, we make the path for the future we trust! / Turning the thousands to millions for us! | 蛻變 |
+| ⑤ | 1:15–1:46 | Verse 2 | 中 | They brag about the watches and the shiny car, / But we're flipping the home, yeah we're raising the bar. / Humble in the office, but we're fierce in the field, / Showing how the power of a team is revealed. / No lone wolves here, we're a pack of the best, / Putting every single ambition to the test. / Education daily, yeah we soak it in, / When the whole team moves, that's a guaranteed win! | 建立 |
+| ⑥ | 1:46–1:57 | Bridge | 收↗ | It's not just a paycheck, it's a life we reclaim, / A family foundation that's out of the frame. / Higher the peak, yeah, the kinder the soul, / Keeping the team as our only goal. | 家・傳承 |
+| ⑦ | 1:57–2:25 | **Chorus 2（最高峰）** | 最高 | (Chorus 重複) We don't just rise... legendary Great! ...sharpen the wing! ...Think Big! ...the future we trust! / Turning the thousands to millions for us! | 遍佈全馬 |
+| ⑧ | 2:25–2:33 | Outro | 收尾 | PropNex! Good to Great! / PropNex! Think Big! / Thousands to millions! / Thousands to millions! / Let's go! | 願景 |
 
 ---
 
-## 3. 兩個「最強卡點」原則
+## 2. 關鍵字 × 畫面母題（歌詞-畫面同步點）
 
-整部片有兩個必須**幀級精準**對上鼓點/副歌落點的瞬間：
+| 歌詞關鍵字 | 出現 | 對應畫面母題 |
+|------------|------|--------------|
+| Shift the gear / growth begin | ① | 火種亮起、光鳥起飛 |
+| learning deep / fast asleep | ② | 深夜苦練、全城已睡唯燈亮 |
+| Project, Sub-sales / grind | ③ | 真實業務場景招牌、苦練上坡 |
+| **sharpen the wing** | ④⑦ | **光鳥磨亮翅膀、振翅上拔**（曲名母題，可重複的記憶動作） |
+| **Think Big** | ④⑦⑧ | 鏡頭瞬間拉大景別/格局、Marcus 指向遠方 |
+| Good to Great | ④⑦⑧ | 灰→暖金的色彩躍遷 |
+| flipping the home / family foundation | ⑤⑥ | 交屋給家庭、新居團聚暖窗 |
+| no lone wolves / power of a team | ⑤ | 眾人手搭手化為發光大樹 |
+| kinder the soul | ⑥ | 阿俊蹲下把暖光別在新人胸口 |
+| **thousands to millions** | ④⑦⑧ | **「67→2000」「千→百萬」光粒子寫天空、燈海擴散** |
+| PropNex! Let's go! | ⑧ | 全場高喊、遞光向鏡頭、北極星升空 |
 
-1. **0:44**（副歌 1 落點）→ ④「雲開神光劈入」。冷色世界第一次被暖光擊穿。
-2. **1:57**（大副歌落點）→ ⑦「穿雲、萬家燈火爆亮」。全片視覺總爆發。
-
-這兩拍是觀眾起雞皮疙瘩的點，剪輯與動畫高潮必須卡在這兩個音上，誤差不得超過 2–3 幀。
+> 「**sharpen the wing**」是曲名與全片記憶點：每次唱到，光鳥都做一次「磨翅→振翅上拔」的招牌動作。
+> 建議在 ④ 與 ⑦ 兩次副歌都讓它出現，成為觀眾可預期的爽點。
 
 ---
 
-## 4. 待辦（拿到歌詞後）
+## 3. 兩個「幀級最強卡點」
 
-- [ ] 填入逐句歌詞，標出含「相信 / 願景 / 家庭 / 市場領導者 / 不停」等關鍵字的小節
-- [ ] 關鍵字所在小節，對位畫面母題（光/燈/家窗/星）做「歌詞-畫面同步」
-- [ ] 若副歌有可重複記憶的 hook 句，設計一個可重複的視覺記憶點（如「舉燈」動作）
-- [ ] 確認是否需要對嘴 (lip-sync)；若主角在副歌「唱出」hook，需做臉部對嘴動畫
+| 卡點 | 時間 | 畫面 | 要求 |
+|------|------|------|------|
+| 副歌 1 落點 | **0:44** | 雲開、第一道神光劈穿灰色世界 | 誤差 ≤2-3 幀 |
+| 大副歌落點 | **1:57** | 穿雲、全馬萬家燈火爆亮 | 誤差 ≤2-3 幀 |
 
-> 提供歌詞後，我可把本表升級為「逐句 timecode 歌詞本 (LRC-style)」直接給剪輯與動畫用。
+外加 outro 高喊卡點：「**PropNex! Good to Great!**」(2:25) 對北極星升空。
+
+---
+
+## 4. 對嘴 (Lip-sync) 與帶動
+
+- 歌曲對外、會在年會/頒獎/培訓播放——副歌 hook（sharpen the wing / Think Big / thousands to millions）建議讓**群眾角色與主角「開口同唱」**，現場才好跟唱帶動。
+- 主角阿凱/阿俊在 ④⑦ 副歌可給「開口唱 hook」的中景，需做臉部對嘴 (visemes)；群眾遠景不需精準對嘴，用張口循環即可。
+- Outro「Let's go!」可設計成全員握拳上舉的定點動作，方便活動現場全場一起做。
+
+---
+
+## 5. 製作備註
+
+- [ ] animatic 階段：用 DAW 看波形，把上表每句歌詞標到精確 timecode，輸出 LRC 給剪輯/動畫。
+- [ ] 確認是否有官方「卡拉OK字幕版」需求（中英對照，呼應公司 CN+EN 字幕慣例）。
+- [ ] Outro 的「PropNex!」呼喊點，預留現場觀眾互動的留白拍點。
