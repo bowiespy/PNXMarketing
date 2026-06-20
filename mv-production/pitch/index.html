@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PropNex · Sharpen the Wing — Animated Film Pitch Bible</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0A2540; --navy2:#0E2E4F; --blue:#0070E0; --sky:#00AEEF;
+  --amber:#E9A23B; --gold:#FFF4D6; --grey:#566370;
+  --ink:#0B1726; --paper:#0a1422; --card:#0f1f33; --card2:#13263e;
+  --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.18);
+  --t1:#EAF2FB; --t2:#9DB2C9; --t3:#6E859E;
+  --r:18px; --r2:12px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--paper);color:var(--t1);
+  line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.serif{font-family:'DM Serif Display',serif}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+a{color:inherit;text-decoration:none}
+section{position:relative}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:50;background:rgba(8,18,30,.82);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line)}
+.nav-i{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:6px;
+  overflow-x:auto;scrollbar-width:none;padding:12px 28px}
+.nav-i::-webkit-scrollbar{display:none}
+.nav-i .lg{font-family:'DM Serif Display',serif;font-size:17px;color:#fff;margin-right:10px;white-space:nowrap}
+.nav-i .lg b{color:var(--sky)}
+.nav-i a{white-space:nowrap;font-size:12.5px;font-weight:600;color:var(--t2);
+  padding:7px 13px;border-radius:20px;transition:.2s}
+.nav-i a:hover{color:#fff;background:rgba(0,112,224,.20)}
+
+/* HERO */
+.hero{min-height:96vh;display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;padding:80px 0 60px}
+.hero-bg{position:absolute;inset:0;background:
+    radial-gradient(900px 600px at 78% 18%,rgba(0,174,239,.22),transparent 60%),
+    radial-gradient(800px 600px at 12% 88%,rgba(233,162,59,.16),transparent 60%),
+    radial-gradient(1200px 800px at 50% 50%,rgba(0,112,224,.10),transparent 70%),
+    linear-gradient(160deg,#06101c,#0a1c30 60%,#081626)}
+.hero-stars{position:absolute;inset:0;opacity:.5}
+.hero .wrap{position:relative}
+.kicker{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--sky);
+  border:1px solid var(--line2);padding:8px 16px;border-radius:30px;margin-bottom:26px}
+.kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--sky);box-shadow:0 0 12px var(--sky)}
+.hero h1{font-size:clamp(46px,8.5vw,104px);line-height:.96;letter-spacing:-.02em;color:#fff;margin-bottom:8px}
+.hero h1 em{font-style:italic;color:var(--sky)}
+.hero .sub{font-size:clamp(16px,2.2vw,22px);color:var(--t2);max-width:680px;margin:22px 0 0;font-weight:300}
+.hero .sub b{color:var(--amber);font-weight:600}
+.spec{display:flex;flex-wrap:wrap;gap:10px;margin-top:38px}
+.spec span{font-size:12.5px;font-weight:600;color:var(--t1);background:rgba(255,255,255,.05);
+  border:1px solid var(--line);padding:9px 15px;border-radius:10px}
+.spec span i{color:var(--t3);font-style:normal}
+.hero-foot{margin-top:46px;font-size:13px;color:var(--t3);display:flex;gap:18px;flex-wrap:wrap}
+
+/* SECTION SHELL */
+.sec{padding:96px 0;border-top:1px solid var(--line)}
+.sec-h{display:flex;align-items:flex-end;gap:22px;margin-bottom:46px}
+.sec-n{font-family:'DM Serif Display',serif;font-size:clamp(46px,7vw,84px);line-height:.8;
+  color:transparent;-webkit-text-stroke:1.4px var(--sky);opacity:.85}
+.sec-t h2{font-size:clamp(26px,4vw,42px);line-height:1.05;letter-spacing:-.01em;color:#fff}
+.sec-t p{color:var(--t2);font-size:15px;margin-top:8px;max-width:680px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--sky);margin-bottom:12px}
+
+/* GENERIC */
+.grid{display:grid;gap:20px}
+.card{background:linear-gradient(180deg,var(--card),var(--paper));border:1px solid var(--line);
+  border-radius:var(--r);padding:26px}
+.card h3{font-size:19px;color:#fff;margin-bottom:8px}
+.muted{color:var(--t2);font-size:14.5px}
+.lead{font-size:19px;color:var(--t1);font-weight:300;line-height:1.75}
+.lead b{font-weight:600;color:#fff}
+.hl-blue{color:var(--sky)} .hl-amber{color:var(--amber)} .hl-gold{color:var(--gold)}
+.pill{display:inline-block;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:20px;
+  border:1px solid var(--line2);color:var(--t2)}
+.divline{height:1px;background:var(--line);margin:14px 0}
+
+/* ONE SHEET */
+.one{display:grid;grid-template-columns:1.4fr .9fr;gap:24px}
+.quote{font-family:'DM Serif Display',serif;font-size:clamp(22px,3vw,32px);line-height:1.35;color:#fff}
+.quote em{color:var(--amber);font-style:italic}
+.kv{display:flex;flex-direction:column;gap:0}
+.kv .row{display:flex;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid var(--line)}
+.kv .row span:first-child{color:var(--t3);font-size:13px}
+.kv .row span:last-child{color:var(--t1);font-size:13.5px;font-weight:600;text-align:right}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+.tri .card{padding:22px}
+.tri .ic{font-size:22px;margin-bottom:10px}
+
+/* BEAT BOARD */
+.beats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.beat{background:var(--card);border:1px solid var(--line);border-radius:var(--r2);padding:16px;position:relative;overflow:hidden}
+.beat .bn{font-family:'DM Serif Display',serif;font-size:30px;color:transparent;-webkit-text-stroke:1px var(--line2);position:absolute;top:8px;right:12px}
+.beat .bt{font-size:11px;color:var(--t3);font-weight:700;letter-spacing:.05em}
+.beat h4{font-size:15.5px;color:#fff;margin:6px 0 6px}
+.beat p{font-size:12.5px;color:var(--t2);line-height:1.55}
+.beat .bar{height:4px;border-radius:4px;margin-top:12px}
+
+/* ARC CHART */
+.arc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+
+/* CHARACTER */
+.chars{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.sheet{background:
+   radial-gradient(120% 80% at 50% 0%,rgba(255,255,255,.05),transparent 60%),
+   linear-gradient(180deg,var(--card2),var(--paper));
+   border:1px solid var(--line);border-radius:var(--r);padding:0;overflow:hidden}
+.sheet-top{display:grid;grid-template-columns:1fr 1.2fr;gap:0}
+.turn{aspect-ratio:1/1.15;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--line);
+  background:repeating-linear-gradient(0deg,transparent,transparent 22px,rgba(255,255,255,.025) 22px,rgba(255,255,255,.025) 23px),
+             repeating-linear-gradient(90deg,transparent,transparent 22px,rgba(255,255,255,.025) 22px,rgba(255,255,255,.025) 23px)}
+.sheet-info{padding:22px}
+.sheet-info .tag{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.sheet-info h3{font-size:26px;color:#fff;margin:6px 0 2px}
+.sheet-info .role{font-size:13px;color:var(--t2);margin-bottom:14px}
+.attr{display:flex;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px}
+.attr b{color:var(--t3);font-weight:600;min-width:62px;flex-shrink:0}
+.attr span{color:var(--t1)}
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.stage{padding:16px;border-right:1px solid var(--line);text-align:center}
+.stage:last-child{border-right:0}
+.stage .sv{height:84px;display:flex;align-items:flex-end;justify-content:center;margin-bottom:10px}
+.stage .sl{font-size:11px;color:var(--t3);font-weight:700}
+.stage .sd{font-size:12px;color:var(--t2);margin-top:3px;line-height:1.4}
+.founders{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:22px}
+.fcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r2);padding:18px;text-align:center}
+.fhead{width:74px;height:74px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;
+  border:2px solid;position:relative}
+.fcard h4{font-size:16px;color:#fff}
+.fcard .fr{font-size:11.5px;color:var(--sky);font-weight:700;margin-bottom:8px}
+.fcard p{font-size:12px;color:var(--t2);line-height:1.5}
+
+/* FLOW TIMELINE */
+.flow{position:relative;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.flow-row{display:grid;grid-template-columns:46px 1fr;align-items:stretch}
+.flow-seg{padding:16px 18px;border-bottom:1px solid var(--line);display:grid;
+  grid-template-columns:90px 1fr 1fr;gap:16px;align-items:center}
+.flow-seg:last-child{border-bottom:0}
+.flow-no{writing-mode:vertical-rl;text-orientation:upright;background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;letter-spacing:.1em;border-right:1px solid var(--line)}
+.flow-tc{font-size:12px;color:var(--t3);font-weight:700}
+.flow-seg h4{font-size:16px;color:#fff}
+.flow-seg .ly{font-size:12px;color:var(--t2);font-style:italic;line-height:1.45}
+.flow-seg .en{font-size:11px;color:var(--t3)}
+.ebar{height:5px;border-radius:5px;margin-top:6px;background:var(--line)}
+.ebar i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,var(--blue),var(--amber))}
+
+/* COLOR SCRIPT */
+.cscript{display:grid;grid-template-columns:repeat(8,1fr);gap:0;border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.cs{height:150px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:12px}
+.cs span{font-size:11px;font-weight:700;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6);position:relative;z-index:2}
+.cs small{font-size:10px;color:rgba(255,255,255,.8);position:relative;z-index:2}
+
+/* STORYBOARD */
+.env{margin-top:34px}
+.env-h{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:16px 20px;border-radius:var(--r2);
+  background:linear-gradient(90deg,rgba(0,112,224,.14),rgba(233,162,59,.07));border:1px solid var(--line);margin-bottom:18px}
+.env-h .en{font-family:'DM Serif Display',serif;font-size:34px;color:var(--sky)}
+.env-h h3{font-size:20px;color:#fff}
+.env-h .tc{font-size:12px;color:var(--t2);font-weight:700;background:rgba(255,255,255,.06);padding:5px 11px;border-radius:8px}
+.env-h .ly{font-size:12.5px;color:var(--t2);font-style:italic;flex:1;min-width:220px}
+.env-h .chip{font-size:11px;font-weight:700;color:var(--navy);background:var(--sky);padding:5px 10px;border-radius:8px}
+.sb{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r2);overflow:hidden;
+  transition:transform .2s,border-color .2s}
+.panel:hover{transform:translateY(-3px);border-color:var(--line2)}
+.frame{position:relative;aspect-ratio:16/9;border-bottom:1px solid var(--line)}
+.frame svg{display:block;width:100%;height:100%}
+.frame .ovl{position:absolute;top:8px;left:8px;right:8px;display:flex;justify-content:space-between;pointer-events:none}
+.frame .sn{font-size:10.5px;font-weight:800;color:#fff;background:rgba(8,18,30,.7);padding:3px 8px;border-radius:6px;letter-spacing:.04em}
+.frame .ln{font-size:10px;font-weight:700;color:var(--gold);background:rgba(8,18,30,.7);padding:3px 8px;border-radius:6px}
+.frame .star{position:absolute;bottom:8px;right:8px;font-size:10px;font-weight:800;color:var(--navy);background:var(--amber);padding:3px 8px;border-radius:6px}
+.pbody{padding:14px 16px 16px}
+.pbody h4{font-size:15px;color:#fff;margin-bottom:3px}
+.pbody .tcam{font-size:11px;color:var(--sky);font-weight:700;margin-bottom:10px}
+.dim{display:flex;gap:8px;font-size:12px;padding:5px 0;border-top:1px solid var(--line)}
+.dim b{color:var(--t3);font-weight:700;min-width:34px;flex-shrink:0;font-size:11px;letter-spacing:.03em}
+.dim span{color:var(--t1);line-height:1.45}
+
+/* PIPELINE / NEXT */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r2);padding:18px;position:relative}
+.step::before{counter-increment:s;content:counter(s);font-family:'DM Serif Display',serif;font-size:26px;color:var(--sky);opacity:.6}
+.step h4{font-size:15px;color:#fff;margin:4px 0 6px}
+.step p{font-size:12.5px;color:var(--t2)}
+.note{background:rgba(233,162,59,.08);border:1px solid rgba(233,162,59,.3);border-radius:var(--r2);
+  padding:16px 18px;font-size:13.5px;color:#f4d8a8}
+.note b{color:var(--amber)}
+
+/* FOOTER */
+.foot{padding:56px 0;border-top:1px solid var(--line);text-align:center;color:var(--t3);font-size:13px}
+.foot .serif{font-size:24px;color:#fff;margin-bottom:10px}
+
+@media(max-width:900px){
+  .one{grid-template-columns:1fr}.chars{grid-template-columns:1fr}
+  .beats{grid-template-columns:repeat(2,1fr)}.sb{grid-template-columns:repeat(2,1fr)}
+  .founders{grid-template-columns:repeat(2,1fr)}.tri{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,1fr)}.cscript{grid-template-columns:repeat(4,1fr)}
+  .flow-seg{grid-template-columns:70px 1fr;gap:10px}.flow-seg .colr{display:none}
+}
+@media(max-width:620px){.sb{grid-template-columns:1fr}.beats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- ===== SVG SYMBOL LIBRARY ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="fig" viewBox="0 0 40 90"><path d="M20 6a8 8 0 100 16 8 8 0 000-16zM8 40c0-7 5-13 12-13s12 6 12 13v18H8zM10 58h20l-2 30h-6l-2-22-2 22h-6z" fill="currentColor"/></symbol>
+  <symbol id="figF" viewBox="0 0 44 90"><path d="M22 5a8 8 0 100 16 8 8 0 000-16zM7 42c0-8 6-15 15-15s15 7 15 15v16H7zM9 58h26l-3 30h-7l-3-20-3 20h-7z" fill="currentColor"/></symbol>
+  <symbol id="towers" viewBox="0 0 60 90"><path d="M18 90V30l4-8 4 8v60zM20 30h8M16 38h16M16 50h16M16 62h16M16 74h16M34 90V40l4-7 4 7v50zM36 40h8M32 52h16M32 64h16M32 76h16M20 22l2-10 2 10M38 33l2-9 2 9" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+  <symbol id="skyline" viewBox="0 0 160 50"><path d="M0 50V34h10V22h8v12h10V14h12v20h8V26h10v24h12V18h10v32h12V30h9v20h12V12h11v38h10V28h9v22h16" fill="currentColor"/></symbol>
+  <symbol id="tree" viewBox="0 0 80 90"><path d="M37 90V52h6v38zM40 8c-14 0-24 11-24 24 0 13 11 22 24 22s24-9 24-22C64 19 54 8 40 8z" fill="currentColor"/></symbol>
+  <symbol id="tower" viewBox="0 0 40 90"><path d="M14 90 16 34h8l2 56zM15 34h10l-2-10h-6zM20 24V8M12 14l16-6M28 14 12 8" fill="currentColor" stroke="currentColor" stroke-width="1"/></symbol>
+  <symbol id="bird" viewBox="0 0 60 40"><path d="M30 20c-6-10-18-12-28-8 8 2 12 6 14 12-4-2-9-2-13 0 7 0 11 3 13 8 4-7 10-10 14-12 4 2 10 5 14 12 2-5 6-8 13-8-4-2-9-2-13 0 2-6 6-10 14-12-10-4-22-2-28 8z" fill="currentColor"/></symbol>
+  <symbol id="star" viewBox="0 0 60 60"><path d="M30 0c2 18 10 28 30 30-20 2-28 12-30 30-2-18-10-28-30-30 20-2 28-12 30-30z" fill="currentColor"/></symbol>
+  <symbol id="win" viewBox="0 0 30 30"><rect x="3" y="3" width="24" height="24" rx="2" fill="currentColor"/><path d="M15 3v24M3 15h24" stroke="rgba(0,0,0,.35)" stroke-width="1.4"/></symbol>
+  <symbol id="umbrella" viewBox="0 0 50 60"><path d="M25 8v40M25 48c0 5-8 5-8 1M5 22c2-9 11-15 20-15s18 6 20 15c-6-4-12-2-13 3-2-6-12-6-14 0-1-5-7-7-13-3z" fill="currentColor"/></symbol>
+  <symbol id="podium" viewBox="0 0 60 90"><path d="M30 6a7 7 0 100 14 7 7 0 000-14zM20 38c0-6 4-11 10-11s10 5 10 11v10H20zM24 30 18 60M36 30 42 60M22 60h40v30H22zM26 60v30M62 60 50 90" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="malaysia" viewBox="0 0 160 70"><path d="M14 40c8-6 20-9 30-6 6-8 16-10 24-6 4-3 10-2 12 2 6-1 10 3 9 8-2 6-10 7-16 5-3 5-10 6-15 3-8 4-18 4-26-1-9 2-18-2-18-8z M84 30c10-7 24-9 36-4 8 3 16 3 24 8 4 3 2 9-3 10-10 3-22 1-30-4-9 3-20 1-27-4-2-2-3-9 0-12z" fill="currentColor"/></symbol>
+  <radialGradient id="glowB" cx="50%" cy="50%"><stop offset="0%" stop-color="#cfe9ff"/><stop offset="35%" stop-color="#0070E0"/><stop offset="100%" stop-color="#0070E0" stop-opacity="0"/></radialGradient>
+  <radialGradient id="glowA" cx="50%" cy="50%"><stop offset="0%" stop-color="#fff0d6"/><stop offset="40%" stop-color="#E9A23B"/><stop offset="100%" stop-color="#E9A23B" stop-opacity="0"/></radialGradient>
+  <radialGradient id="glowG" cx="50%" cy="50%"><stop offset="0%" stop-color="#fffaf0"/><stop offset="45%" stop-color="#FFF4D6"/><stop offset="100%" stop-color="#FFF4D6" stop-opacity="0"/></radialGradient>
+</defs></svg>
+
+<!-- ===== NAV ===== -->
+<nav class="nav"><div class="nav-i">
+  <span class="lg">Prop<b>Nex</b> · Sharpen the Wing</span>
+  <a href="#cover">Cover</a>
+  <a href="#story">① Story</a>
+  <a href="#structure">② Structure</a>
+  <a href="#chars">③ Characters</a>
+  <a href="#flow">④ Story Flow</a>
+  <a href="#color">⑤ Color Script</a>
+  <a href="#board">⑥ Storyboard</a>
+  <a href="#pipe">⑦ Pipeline</a>
+</div></nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="cover">
+  <div class="hero-bg"></div>
+  <svg class="hero-stars" viewBox="0 0 1000 600" preserveAspectRatio="none">
+    <g fill="#fff"><circle cx="120" cy="90" r="1.1"/><circle cx="320" cy="60" r="1.4" opacity=".7"/><circle cx="540" cy="120" r="1"/><circle cx="760" cy="70" r="1.3" opacity=".6"/><circle cx="880" cy="150" r="1"/><circle cx="200" cy="200" r="1" opacity=".5"/><circle cx="650" cy="230" r="1.2" opacity=".7"/><circle cx="430" cy="180" r="1"/><circle cx="920" cy="300" r="1.1" opacity=".6"/><circle cx="80" cy="320" r="1"/></g>
+    <use href="#bird" x="600" y="250" width="150" height="100" fill="url(#glowB)" opacity=".9"/>
+  </svg>
+  <div class="wrap">
+    <span class="kicker"><span class="dot"></span>Animated Film · Pitch Bible · Confidential</span>
+    <h1 class="serif">Sharpen<br>the <em>Wing</em></h1>
+    <p class="sub">一支 CG 3D 動畫主題曲電影。八年，四位創辦人，兩束光，<b>千萬個被翻轉的家庭</b>。<br>Good to Great · Think Big · Thousands to Millions.</p>
+    <div class="spec">
+      <span><i>Format</i> &nbsp;CG 3D Animated MV</span>
+      <span><i>Runtime</i> &nbsp;2:33 (153s)</span>
+      <span><i>Tempo</i> &nbsp;~143 BPM · 雙副歌</span>
+      <span><i>Style</i> &nbsp;Inside Out × Soul</span>
+      <span><i>Aspect</i> &nbsp;16:9 · 4K</span>
+      <span><i>Client</i> &nbsp;PropNex Malaysia</span>
+    </div>
+    <div class="hero-foot">
+      <span>EST. 2018 → 2026 · 8 Years</span><span>67 → 2,000 People</span><span>Across Malaysia</span>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 1. STORY ===== -->
+<section class="sec" id="story"><div class="wrap">
+  <div class="sec-h">
+    <div class="sec-n serif">01</div>
+    <div class="sec-t"><div class="eyebrow">The One-Sheet</div><h2>故事大綱與精神內核</h2>
+      <p>每一份 Pixar 提案的第一頁：一句話故事、主題、願景，以及全片的母題符號。</p></div>
+  </div>
+
+  <div class="one">
+    <div class="card">
+      <p class="quote">2018，四個人帶著一束光，把 PropNex 帶進這片土地。<br>
+      兩個一無所有的年輕人選擇<em>相信</em>、留下、苦練、傳承——<br>
+      八年，把 67 人的小團隊，變成遍佈全馬、<em>2,000 人的家</em>。</p>
+      <div class="divline"></div>
+      <p class="muted"><b style="color:#fff">內在主題（Theme）：</b>「相信」會複製。一個人相信一束光 → 一群人圍著光 → 光被傳給下一代 → 最後照亮千千萬萬個家庭。願景 <span class="hl-blue">To Be Market Leader</span> 不是打敗誰，而是改變市場生態圈、打造讓年輕人安心創業的平台，實現「事業成功，家庭幸福」。</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Logline Specs</div>
+      <div class="kv">
+        <div class="row"><span>Genre</span><span>Inspirational / Coming-of-age</span></div>
+        <div class="row"><span>主角 A</span><span>阿凱 Kai · 精進的火 🔵</span></div>
+        <div class="row"><span>主角 B</span><span>阿俊 Jun · 溫暖的光 🟠</span></div>
+        <div class="row"><span>引路人</span><span>Marcus · Evon · Steve · Yuki</span></div>
+        <div class="row"><span>母題符號</span><span>一束光 / 光鳥 / 燈海 / 北極星</span></div>
+        <div class="row"><span>情感弧線</span><span>相信→質疑→堅持→蛻變→傳承→燎原→昇華</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tri" style="margin-top:22px">
+    <div class="card"><div class="ic">🔥</div><h3>火種 → 燈海</h3><p class="muted">創辦人手中一顆微光，被分給每個願意相信的人，最終 2,000 盞燈連成覆蓋全馬的星海。把「抽象願景」變成「可見光量」。</p></div>
+    <div class="card"><div class="ic">🪽</div><h3>Sharpen the Wing</h3><p class="muted">曲名即母題：一隻由光構成的鳥，每次副歌都「磨亮翅膀、振翅上拔」。觀眾可預期的視覺爽點與記憶錨。</p></div>
+    <div class="card"><div class="ic">🏠</div><h3>事業 × 家庭</h3><p class="muted">藍光（事業/精進）× 琥珀光（家庭/關懷）兩色辯證，最終交融成「藍金」——正是「事業成功 × 家庭幸福」的視覺合一。</p></div>
+  </div>
+</div></section>
+
+<!-- ===== 2. STRUCTURE ===== -->
+<section class="sec" id="structure"><div class="wrap">
+  <div class="sec-h">
+    <div class="sec-n serif">02</div>
+    <div class="sec-t"><div class="eyebrow">Story Structure · Beat Board</div><h2>故事架構：八環節節拍板</h2>
+      <p>八個環節，各自獨立支線、串連成一齣完整的劇。對應歌曲雙副歌結構的兩個情緒高峰。</p></div>
+  </div>
+
+  <div class="beats">
+    <div class="beat"><div class="bn serif">1</div><div class="bt">INTRO · 0:00</div><h4>火種・開場</h4><p>四老闆共護品牌火種，化作光鳥飛入夜城，點亮主角的窗。</p><div class="bar" style="background:linear-gradient(90deg,#0A2540,#0070E0)"></div></div>
+    <div class="beat"><div class="bn serif">2</div><div class="bt">VERSE 1a · 0:16</div><h4>留下來的人</h4><p>67 人簡陋辦公室苦練。阿凱抄筆記、阿俊幫新人。沒有濾鏡的真實。</p><div class="bar" style="background:linear-gradient(90deg,#566370,#0070E0)"></div></div>
+    <div class="beat"><div class="bn serif">3</div><div class="bt">VERSE 1b · 0:30</div><h4>沒人看好</h4><p>灰雨、質疑、被關門。Marcus 一句話點亮阿凱的藍火。</p><div class="bar" style="background:linear-gradient(90deg,#33414F,#566370)"></div></div>
+    <div class="beat"><div class="bn serif">4</div><div class="bt">CHORUS 1 · 0:44 ★</div><h4>不停前進・蛻變</h4><p>雲開神光，兩束光首次交融成藍金。第一情緒高峰。</p><div class="bar" style="background:linear-gradient(90deg,#0070E0,#E9A23B)"></div></div>
+    <div class="beat"><div class="bn serif">5</div><div class="bt">VERSE 2 · 1:15</div><h4>建立</h4><p>阿凱建培訓塔、阿俊立團隊大樹。Steve 衝現場、Yuki 授課。</p><div class="bar" style="background:linear-gradient(90deg,#0070E0,#00AEEF)"></div></div>
+    <div class="beat"><div class="bn serif">6</div><div class="bt">BRIDGE · 1:46</div><h4>家・傳承</h4><p>全片最柔軟。交屋給家庭，兩人把光分給下一代 leader。</p><div class="bar" style="background:linear-gradient(90deg,#E9A23B,#FFF4D6)"></div></div>
+    <div class="beat"><div class="bn serif">7</div><div class="bt">CHORUS 2 · 1:57 ★</div><h4>遍佈全馬・燈海</h4><p>穿雲、2,000 盞燈覆蓋全馬地圖。全片最高峰。</p><div class="bar" style="background:linear-gradient(90deg,#0070E0,#E9A23B)"></div></div>
+    <div class="beat"><div class="bn serif">8</div><div class="bt">OUTRO · 2:25</div><h4>願景・北極星</h4><p>燈海凝成升空北極星，照亮萬家窗。六人遞光向鏡頭。</p><div class="bar" style="background:linear-gradient(90deg,#FFF4D6,#00AEEF)"></div></div>
+  </div>
+
+  <div style="margin-top:24px" class="arc">
+    <div class="eyebrow">Emotional Arc · 情緒曲線</div>
+    <svg viewBox="0 0 1000 230" style="width:100%;height:auto">
+      <defs><linearGradient id="arcFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#0070E0" stop-opacity=".35"/><stop offset="100%" stop-color="#0070E0" stop-opacity="0"/></linearGradient>
+      <linearGradient id="arcLine" x1="0" x2="1"><stop offset="0%" stop-color="#00AEEF"/><stop offset="50%" stop-color="#0070E0"/><stop offset="100%" stop-color="#E9A23B"/></linearGradient></defs>
+      <g stroke="rgba(255,255,255,.08)"><line x1="0" y1="190" x2="1000" y2="190"/><line x1="0" y1="120" x2="1000" y2="120"/><line x1="0" y1="50" x2="1000" y2="50"/></g>
+      <path d="M0 175 L120 150 L250 165 L380 55 L560 120 L700 95 L850 30 L1000 145" fill="none" stroke="url(#arcLine)" stroke-width="3.5" stroke-linejoin="round"/>
+      <path d="M0 175 L120 150 L250 165 L380 55 L560 120 L700 95 L850 30 L1000 145 L1000 230 L0 230 Z" fill="url(#arcFill)"/>
+      <g fill="#fff" font-size="13" font-weight="700" font-family="DM Sans"><circle cx="380" cy="55" r="5" fill="#FFF4D6"/><circle cx="850" cy="30" r="6" fill="#E9A23B"/></g>
+      <g fill="#9DB2C9" font-size="11" font-family="DM Sans" text-anchor="middle">
+        <text x="40" y="215">①火種</text><text x="170" y="215">②打拼</text><text x="290" y="215">③質疑</text>
+        <text x="400" y="42">④副歌★</text><text x="560" y="215">⑤建立</text><text x="700" y="215">⑥家</text>
+        <text x="850" y="18">⑦燈海★</text><text x="965" y="215">⑧願景</text></g>
+    </svg>
+    <p class="muted" style="margin-top:8px">兩個波峰＝兩段副歌＝兩次「光」的爆發（0:44 / 1:57）。⑥橋段是全片唯一「向內收」的柔軟拍，用以反襯⑦的總爆發。</p>
+  </div>
+</div></section>
+
+<!-- ===== 3. CHARACTERS ===== -->
+<section class="sec" id="chars"><div class="wrap">
+  <div class="sec-h">
+    <div class="sec-n serif">03</div>
+    <div class="sec-t"><div class="eyebrow">Character Design · Model Sheets</div><h2>人物造型設計</h2>
+      <p>《Inside Out》鮮明角色辨識 +《Soul》靈魂溫度。每個角色有強烈剪影、招牌情緒色與「靈魂光」。</p></div>
+  </div>
+
+  <div class="chars">
+    <!-- KAI -->
+    <div class="sheet">
+      <div class="sheet-top">
+        <div class="turn" style="color:#0070E0">
+          <svg viewBox="0 0 120 140" width="78%"><use href="#fig" x="40" y="25" width="40" height="90"/><circle cx="60" cy="58" r="9" fill="url(#glowB)"/><circle cx="60" cy="58" r="3.5" fill="#cfe9ff"/></svg>
+        </div>
+        <div class="sheet-info">
+          <div class="tag" style="color:#0070E0">PROTAGONIST A</div>
+          <h3>阿凱 <span style="font-size:16px;color:#9DB2C9">Kai</span></h3>
+          <div class="role">「精進的火」· 帶團隊 / 緊跟老闆做培訓</div>
+          <div class="attr"><b>主導情緒</b><span>決心 Determination</span></div>
+          <div class="attr"><b>靈魂光</b><span>胸口藍色學習之火 #0070E0</span></div>
+          <div class="attr"><b>剪影</b><span>精實、肩線方正、站姿筆直</span></div>
+          <div class="attr"><b>招牌動作</b><span>抄筆記、握拳、白板畫框架</span></div>
+          <div class="attr"><b>歌詞對應</b><span>learning · sharpen the wing · Think Big</span></div>
+        </div>
+      </div>
+      <div class="stages" style="color:#0070E0">
+        <div class="stage"><div class="sv"><svg viewBox="0 0 40 90" width="34"><use href="#fig" fill="#7da8c8"/></svg></div><div class="sl">菜鳥黃毛</div><div class="sd">領帶歪・瀏海亂・微弱藍火</div></div>
+        <div class="stage"><div class="sv"><svg viewBox="0 0 40 90" width="38"><use href="#fig" fill="#3f86c4"/></svg></div><div class="sl">蛻變期</div><div class="sd">捲袖・站姿穩・穩定燃燒</div></div>
+        <div class="stage"><div class="sv"><svg viewBox="0 0 40 90" width="42"><use href="#fig" fill="#0070E0"/></svg></div><div class="sl">大團隊 Leader</div><div class="sd">合身西裝・明亮藍焰・分火給人</div></div>
+      </div>
+    </div>
+
+    <!-- JUN -->
+    <div class="sheet">
+      <div class="sheet-top">
+        <div class="turn" style="color:#E9A23B">
+          <svg viewBox="0 0 120 140" width="80%"><use href="#figF" x="38" y="25" width="44" height="90"/><circle cx="60" cy="60" r="11" fill="url(#glowA)"/><circle cx="60" cy="60" r="3.5" fill="#fff0d6"/></svg>
+        </div>
+        <div class="sheet-info">
+          <div class="tag" style="color:#E9A23B">PROTAGONIST B</div>
+          <h3>阿俊 <span style="font-size:16px;color:#9DB2C9">Jun</span></h3>
+          <div class="role">「溫暖的光」· 好大哥 / 暖男 / 關懷 agent</div>
+          <div class="attr"><b>主導情緒</b><span>共情 Empathy / Warmth</span></div>
+          <div class="attr"><b>靈魂光</b><span>胸口琥珀暖暈 #E9A23B</span></div>
+          <div class="attr"><b>剪影</b><span>寬厚圓潤、像靠得住的小山</span></div>
+          <div class="attr"><b>招牌動作</b><span>手搭肩、彎腰傾聽、遞咖啡</span></div>
+          <div class="attr"><b>歌詞對應</b><span>kinder soul · no lone wolves · family</span></div>
+        </div>
+      </div>
+      <div class="stages" style="color:#E9A23B">
+        <div class="stage"><div class="sv"><svg viewBox="0 0 44 90" width="36"><use href="#figF" fill="#caa06a"/></svg></div><div class="sl">靦腆新人</div><div class="sd">先顧別人・微弱暖暈</div></div>
+        <div class="stage"><div class="sv"><svg viewBox="0 0 44 90" width="40"><use href="#figF" fill="#dd9a4e"/></svg></div><div class="sl">蛻變期</div><div class="sd">小組依靠・穩定暖光</div></div>
+        <div class="stage"><div class="sv"><svg viewBox="0 0 44 90" width="44"><use href="#figF" fill="#E9A23B"/></svg></div><div class="sl">大團隊 Leader</div><div class="sd">眾人圍繞・大片暖金光暈</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="eyebrow" style="margin:30px 0 4px">引路人 · 四位老闆（真人・全片穿插）</div>
+  <p class="muted" style="margin-bottom:16px">不只開場——在每個關鍵節點「恰好在場」：培訓台、頒獎、project 現場、合影。對外片需依官方照片做風格化寫實肖像並取得簽核。</p>
+  <div class="founders">
+    <div class="fcard"><div class="fhead" style="border-color:#0A2540;color:#0A2540"><svg viewBox="0 0 60 90" width="30"><use href="#podium" stroke="#5b87b8"/></svg></div><h4>Marcus Teng</h4><div class="fr">CEO</div><p>願景與「Think Big」的源頭。台上演講、指向遠方。</p></div>
+    <div class="fcard"><div class="fhead" style="border-color:#00AEEF;color:#00AEEF"><svg viewBox="0 0 40 90" width="20"><use href="#fig" fill="#00AEEF"/></svg></div><h4>Evon Heng</h4><div class="fr">Executive Director</div><p>執行與制度。帶培訓、頒獎、起立帶動全場。</p></div>
+    <div class="fcard"><div class="fhead" style="border-color:#7da8c8;color:#7da8c8"><svg viewBox="0 0 40 90" width="20"><use href="#fig" fill="#7da8c8"/></svg></div><h4>Steve Tong</h4><div class="fr">Founder</div><p>實戰與市場開拓。project 現場帶隊衝、握手成交。</p></div>
+    <div class="fcard"><div class="fhead" style="border-color:#E9A23B;color:#E9A23B"><svg viewBox="0 0 44 90" width="20"><use href="#figF" fill="#E9A23B"/></svg></div><h4>Yuki Wan</h4><div class="fr">Founder</div><p>文化與人才培育。關懷新人、頒證書、合影。</p></div>
+  </div>
+</div></section>
+
+<!-- ===== 4. STORY FLOW ===== -->
+<section class="sec" id="flow"><div class="wrap">
+  <div class="sec-h">
+    <div class="sec-n serif">04</div>
+    <div class="sec-t"><div class="eyebrow">Story Flow · Sequence Map</div><h2>Story Flow：歌詞 × 段落 × 能量</h2>
+      <p>153 秒的敘事脊椎。每個環節對應實際歌詞段落與音訊能量（綠色＝該段強度）。</p></div>
+  </div>
+  <div class="flow">
+    <div class="flow-seg"><div><div class="flow-tc">0:00–0:16</div><span class="pill">Intro</span></div><div><h4>① 火種・開場</h4><div class="ly">"Shift the gear, we're moving in! / let the growth begin!"</div></div><div class="colr"><div class="en">能量 低↗</div><div class="ebar"><i style="width:25%"></i></div></div></div>
+    <div class="flow-seg"><div><div class="flow-tc">0:16–0:30</div><span class="pill">Verse 1a</span></div><div><h4>② 留下來的人</h4><div class="ly">"Real life results… learning deep / world is fast asleep."</div></div><div class="colr"><div class="en">能量 中</div><div class="ebar"><i style="width:43%"></i></div></div></div>
+    <div class="flow-seg"><div><div class="flow-tc">0:30–0:44</div><span class="pill">Verse 1b</span></div><div><h4>③ 沒人看好</h4><div class="ly">"Project, Sub-sales… got to learn / a bridge you burn."</div></div><div class="colr"><div class="en">能量 中↗</div><div class="ebar"><i style="width:48%"></i></div></div></div>
+    <div class="flow-seg" style="background:rgba(0,112,224,.06)"><div><div class="flow-tc">0:44–1:15</div><span class="pill" style="border-color:#0070E0;color:#7cc0ff">Chorus 1 ★</span></div><div><h4>④ 不停前進・蛻變</h4><div class="ly">"We evolve, we create! …sharpen the wing! …Think Big!"</div></div><div class="colr"><div class="en">能量 高（峰）</div><div class="ebar"><i style="width:66%"></i></div></div></div>
+    <div class="flow-seg"><div><div class="flow-tc">1:15–1:46</div><span class="pill">Verse 2</span></div><div><h4>⑤ 建立</h4><div class="ly">"flipping the home… no lone wolves… education daily."</div></div><div class="colr"><div class="en">能量 中</div><div class="ebar"><i style="width:44%"></i></div></div></div>
+    <div class="flow-seg" style="background:rgba(233,162,59,.05)"><div><div class="flow-tc">1:46–1:57</div><span class="pill" style="border-color:#E9A23B;color:#f0c078">Bridge</span></div><div><h4>⑥ 家・傳承</h4><div class="ly">"a family foundation… the kinder the soul."</div></div><div class="colr"><div class="en">能量 收↗</div><div class="ebar"><i style="width:46%"></i></div></div></div>
+    <div class="flow-seg" style="background:rgba(0,112,224,.08)"><div><div class="flow-tc">1:57–2:25</div><span class="pill" style="border-color:#0070E0;color:#7cc0ff">Chorus 2 ★</span></div><div><h4>⑦ 遍佈全馬・燈海</h4><div class="ly">"…thousands to millions for us!"（最高峰）</div></div><div class="colr"><div class="en">能量 最高</div><div class="ebar"><i style="width:90%"></i></div></div></div>
+    <div class="flow-seg"><div><div class="flow-tc">2:25–2:33</div><span class="pill">Outro</span></div><div><h4>⑧ 願景・北極星</h4><div class="ly">"PropNex! Good to Great! Think Big! …Let's go!"</div></div><div class="colr"><div class="en">能量 收尾</div><div class="ebar"><i style="width:30%"></i></div></div></div>
+  </div>
+</div></section>
+
+<!-- ===== 5. COLOR SCRIPT ===== -->
+<section class="sec" id="color"><div class="wrap">
+  <div class="sec-h">
+    <div class="sec-n serif">05</div>
+    <div class="sec-t"><div class="eyebrow">Color Script</div><h2>色彩劇本：灰冷 → 藍金 → 暖金</h2>
+      <p>用顏色說情緒。PropNex 品牌藍（事業/精進）× 暖琥珀（家庭/關懷）的全片辯證。</p></div>
+  </div>
+  <div class="cscript">
+    <div class="cs" style="background:radial-gradient(circle at 50% 40%,#1c3a5e,#0A2540)"><span>① 火種</span><small>navy + 藍金火種</small></div>
+    <div class="cs" style="background:linear-gradient(160deg,#3a4658,#566370)"><span>② 打拼</span><small>質疑灰 + 桌燈暖</small></div>
+    <div class="cs" style="background:linear-gradient(160deg,#2c3742,#454f5b)"><span>③ 質疑</span><small>冷灰 + 黑傘</small></div>
+    <div class="cs" style="background:linear-gradient(160deg,#3a4a66,#0070E0 70%,#E9A23B)"><span>④ 蛻變 ★</span><small>灰被藍光擊穿</small></div>
+    <div class="cs" style="background:linear-gradient(160deg,#0070E0,#1f6fae 60%,#caa06a)"><span>⑤ 建立</span><small>品牌藍 + 木質暖</small></div>
+    <div class="cs" style="background:linear-gradient(160deg,#E9A23B,#f0c078)"><span>⑥ 家</span><small>暖琥珀 + 家窗橘</small></div>
+    <div class="cs" style="background:radial-gradient(circle at 50% 60%,#E9A23B,#0070E0 80%,#0A2540)"><span>⑦ 燈海 ★</span><small>藍金燈海</small></div>
+    <div class="cs" style="background:radial-gradient(circle at 50% 30%,#FFF4D6,#E9A23B 50%,#0A2540)"><span>⑧ 願景</span><small>暖白金北極星</small></div>
+  </div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+    <span class="pill" style="border-color:#0A2540;background:#0A2540;color:#fff">Navy #0A2540</span>
+    <span class="pill" style="border-color:#0070E0;background:#0070E0;color:#fff">Blue #0070E0</span>
+    <span class="pill" style="border-color:#00AEEF;background:#00AEEF;color:#04243a">Sky #00AEEF</span>
+    <span class="pill" style="border-color:#E9A23B;background:#E9A23B;color:#3a2606">Amber #E9A23B</span>
+    <span class="pill" style="border-color:#FFF4D6;background:#FFF4D6;color:#5a4a1e">Gold #FFF4D6</span>
+    <span class="pill" style="border-color:#566370;background:#566370;color:#fff">Doubt #566370</span>
+  </div>
+</div></section>
+
+<!-- ===== 6. STORYBOARD ===== -->
+<section class="sec" id="board"><div class="wrap">
+  <div class="sec-h">
+    <div class="sec-n serif">06</div>
+    <div class="sec-t"><div class="eyebrow">Storyboard · Shot-by-Shot</div><h2>分鏡腳本（逐格細節）</h2>
+      <p>38 顆鏡頭，每格含 16:9 構圖、鏡號、時間碼、景別/鏡頭，以及八維度核心細節。★＝幀級最強卡點。完整八維度 prompt 見 <code>09_PROMPT_BIBLE.md</code>。</p></div>
+  </div>
+</div>
+<div class="wrap">
+
+<!-- ENV 1 -->
+<div class="env">
+  <div class="env-h"><span class="en serif">①</span><h3>火種・開場</h3><span class="tc">0:00–0:16 · Intro</span><span class="ly">"Shift the gear, we're moving in! / let the growth begin!"</span><span class="chip">能量 低↗</span></div>
+  <div class="sb">
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#08111d"/><circle cx="80" cy="45" r="30" fill="url(#glowB)"/><circle cx="80" cy="45" r="6" fill="#dff0ff"/><g fill="#fff" opacity=".5"><circle cx="30" cy="20" r="1"/><circle cx="130" cy="25" r="1"/><circle cx="120" cy="68" r="1"/></g></svg>
+    <div class="ovl"><span class="sn">① 1-1</span><span class="ln">ECU</span></div></div>
+    <div class="pbody"><h4>火種亮起</h4><div class="tcam">微距 · 固定機位帶呼吸晃</div>
+      <div class="dim"><b>編導</b><span>全片第一顆，建立「光＝信念」母題，隨第一鼓點亮起</span></div>
+      <div class="dim"><b>動作</b><span>火種明→暗→明脈動，內部粒子對流，浮塵被氣流帶動</span></div>
+      <div class="dim"><b>情緒</b><span>神秘・希望初生・屏息</span></div>
+      <div class="dim"><b>調色</b><span>黑底 #0A2540，火心 #0070E0→#FFF4D6</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#0a1626"/><circle cx="80" cy="44" r="14" fill="url(#glowB)"/><g fill="#04101e"><use href="#fig" x="42" y="34" width="22" height="50"/><use href="#fig" x="62" y="32" width="22" height="52"/><use href="#fig" x="82" y="32" width="22" height="52"/><use href="#fig" x="100" y="34" width="22" height="50"/></g></svg>
+    <div class="ovl"><span class="sn">① 1-2a</span><span class="ln">WS 逆光</span></div></div>
+    <div class="pbody"><h4>四老闆群像</h4><div class="tcam">廣角微仰 · 緩慢 dolly-out</div>
+      <div class="dim"><b>編導</b><span>交代「四個老闆引進品牌」起點，首次四人群像</span></div>
+      <div class="dim"><b>動作</b><span>近靜止但活：衣角微動、重心微轉、髮絲飄</span></div>
+      <div class="dim"><b>表情</b><span>剪影側臉輪廓光，眼神望向火種</span></div>
+      <div class="dim"><b>調色</b><span>navy 剪影 + 火種藍金邊光，強逆光</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#0c1422"/><circle cx="80" cy="46" r="18" fill="url(#glowB)"/><circle cx="80" cy="46" r="5" fill="#eaf6ff"/><g stroke="#caa078" stroke-width="3" stroke-linecap="round" fill="none" opacity=".9"><path d="M40 80 60 56"/><path d="M120 80 100 56"/><path d="M70 86 76 60"/><path d="M90 86 84 60"/></g></svg>
+    <div class="ovl"><span class="sn">① 1-2b</span><span class="ln">CU insert</span></div></div>
+    <div class="pbody"><h4>四手共護火種</h4><div class="tcam">俯角微距 · 極淺景深</div>
+      <div class="dim"><b>編導</b><span>細節插入鏡，強調「共同守護」，與 1-2a 動接動</span></div>
+      <div class="dim"><b>動作</b><span>指尖極細微靠近/張合，火種感應漲亮，指節皮膚微皺</span></div>
+      <div class="dim"><b>情緒</b><span>溫柔・神聖・蓄勢</span></div>
+      <div class="dim"><b>調色</b><span>暖膚 SSS + 藍金火光掌心 GI 反射</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#0a1424"/><use href="#bird" x="50" y="28" width="70" height="46" fill="url(#glowB)"/><circle cx="85" cy="50" r="3" fill="#fff"/><path d="M40 70 Q80 40 120 30" stroke="#7cc0ff" stroke-width="1.5" fill="none" opacity=".6"/></svg>
+    <div class="ovl"><span class="sn">① 1-3</span><span class="ln">CU→WS</span></div></div>
+    <div class="pbody"><h4>火種化光鳥</h4><div class="tcam">跟拍 + 上升 · focus pull</div>
+      <div class="dim"><b>編導</b><span>把信念具象成會飛的生命，隨鼓點上拔起飛</span></div>
+      <div class="dim"><b>動作</b><span>成形→振翅（主）+ 能量拖尾（次）+ 四人衣髮被氣流吹（環境）</span></div>
+      <div class="dim"><b>情緒</b><span>希望升起・能量釋放</span></div>
+      <div class="dim"><b>調色</b><span>藍金光鳥 vs 深藍空間，拖尾 bloom</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#0a1a30"/><use href="#skyline" x="0" y="46" width="160" height="44" fill="#0c2138"/><use href="#towers" x="58" y="30" width="44" height="60" fill="#13314f"/><use href="#bird" x="20" y="14" width="40" height="26" fill="url(#glowB)"/><rect x="92" y="58" width="6" height="6" fill="#ffd98a"/><circle cx="95" cy="61" r="7" fill="url(#glowA)" opacity=".8"/></svg>
+    <div class="ovl"><span class="sn">① 1-4</span><span class="ln">crane up</span></div></div>
+    <div class="pbody"><h4>光鳥點亮窗</h4><div class="tcam">大廣角航拍感 · 城市縱深</div>
+      <div class="dim"><b>編導</b><span>起源連到主角——點亮阿凱阿俊的辦公室窗，轉場②</span></div>
+      <div class="dim"><b>動作</b><span>光鳥弧線滑翔轉彎、拖尾飄散、車流光點移動、雲緩飄</span></div>
+      <div class="dim"><b>情緒</b><span>遼闊・啟程</span></div>
+      <div class="dim"><b>調色</b><span>navy 夜空 + 城市暖點 + 光鳥藍金</span></div></div></div>
+
+  </div>
+</div>
+
+<!-- ENV 2 -->
+<div class="env">
+  <div class="env-h"><span class="en serif">②</span><h3>留下來的人・日常打拼</h3><span class="tc">0:16–0:30 · Verse 1a</span><span class="ly">"Real life results… learning deep / world is fast asleep."</span><span class="chip">能量 中</span></div>
+  <div class="sb">
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#3a4658"/><rect x="14" y="14" width="64" height="46" rx="2" fill="#dfe6ee"/><g stroke="#7a8a9c" stroke-width="1"><path d="M22 26h44M22 34h40M22 42h46"/></g><use href="#fig" x="96" y="30" width="30" height="60" fill="#26323f"/><circle cx="106" cy="50" r="6" fill="url(#glowB)"/><rect x="120" y="70" width="18" height="14" fill="#1d2731"/></svg>
+    <div class="ovl"><span class="sn">② 2-1a</span><span class="ln">MS 略低</span></div></div>
+    <div class="pbody"><h4>阿凱練話術</h4><div class="tcam">略低角 · 輕推軌 · 淺景深</div>
+      <div class="dim"><b>編導</b><span>建立阿凱「精進型」人設（learning deep），beat 起鏡</span></div>
+      <div class="dim"><b>動作</b><span>對白板比劃（主）+ 翻筆記（次）+ 重心隨語氣前後微移、呼吸（微）</span></div>
+      <div class="dim"><b>表情</b><span>專注、眉微鎖、嘴型默念，胸口藍火微亮</span></div>
+      <div class="dim"><b>調色</b><span>質疑灰 #566370 + 桌燈暖 + 藍火點綴</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#2c3742"/><rect x="30" y="20" width="100" height="60" rx="3" fill="#e8d9b5"/><g stroke="#b09a6a" stroke-width="1.2"><path d="M40 32h80M40 40h70M40 48h82M40 56h60M40 64h75"/></g><circle cx="120" cy="64" r="5" fill="url(#glowB)" opacity=".7"/></svg>
+    <div class="ovl"><span class="sn">② 2-1b</span><span class="ln">ECU insert</span></div></div>
+    <div class="pbody"><h4>筆記本特寫</h4><div class="tcam">俯拍微距 · rack focus</div>
+      <div class="dim"><b>編導</b><span>insert 物件鏡，量化「苦練」，與 2-1a 動接動翻頁延續</span></div>
+      <div class="dim"><b>動作</b><span>手指翻頁、筆尖點字，紙因翻動微彈、咖啡微晃</span></div>
+      <div class="dim"><b>美術</b><span>翻舊卷邊、咖啡漬、紙纖維 micro-detail</span></div>
+      <div class="dim"><b>調色</b><span>暖桌燈紙暖白，藍火在紙面一抹冷光</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#333e4a"/><circle cx="78" cy="52" r="26" fill="url(#glowA)" opacity=".85"/><use href="#figF" x="50" y="30" width="34" height="60" fill="#2a3038"/><use href="#fig" x="86" y="40" width="26" height="50" fill="#3a4048"/><rect x="100" y="60" width="8" height="10" fill="#5a4a2a"/></svg>
+    <div class="ovl"><span class="sn">② 2-2</span><span class="ln">OTS</span></div></div>
+    <div class="pbody"><h4>阿俊幫沮喪新人</h4><div class="tcam">過肩 · 淺景深 · 輕手持</div>
+      <div class="dim"><b>編導</b><span>建立阿俊「暖男」人設（better way），雙線並行</span></div>
+      <div class="dim"><b>動作</b><span>蹲下、手搭肩（壓陷）、遞咖啡；新人抬頭肩鬆；暖暈擴散照亮新人臉</span></div>
+      <div class="dim"><b>表情</b><span>阿俊溫定笑眼安撫；新人垂眼→含淚抬眼</span></div>
+      <div class="dim"><b>調色</b><span>環境冷灰，阿俊暖琥珀光成暖心</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#28323d"/><g fill="#1c252e"><use href="#fig" x="10" y="44" width="18" height="40"/><use href="#fig" x="34" y="46" width="18" height="38"/><use href="#fig" x="58" y="44" width="18" height="40"/><use href="#fig" x="86" y="46" width="18" height="38"/><use href="#fig" x="110" y="44" width="18" height="40"/><use href="#fig" x="134" y="46" width="18" height="38"/></g><g><circle cx="19" cy="58" r="3" fill="#7cc0ff"/><circle cx="67" cy="58" r="3" fill="#ffd98a"/><circle cx="119" cy="58" r="3" fill="#7cc0ff"/></g><rect x="120" y="10" width="30" height="22" fill="#0e1922"/></svg>
+    <div class="ovl"><span class="sn">② 2-3</span><span class="ln">WS slow dolly</span></div></div>
+    <div class="pbody"><h4>全屋深夜苦幹</h4><div class="tcam">緩慢橫移 · 前景進出框</div>
+      <div class="dim"><b>編導</b><span>群像 establishing：一群「留下來的人」（world fast asleep）</span></div>
+      <div class="dim"><b>動作</b><span>多組人錯開節奏（staggered 避複製），胸口微光骨牌式漸亮</span></div>
+      <div class="dim"><b>情緒</b><span>群體的倔強與溫度</span></div>
+      <div class="dim"><b>調色</b><span>冷灰夜辦公室 + 點點胸口微光 + 窗外深藍</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="80" height="90" fill="#2f3a46"/><rect x="80" width="80" height="90" fill="#323d49"/><use href="#fig" x="24" y="26" width="34" height="62" fill="#222d36"/><use href="#figF" x="100" y="24" width="38" height="64" fill="#242c34"/><circle cx="41" cy="48" r="6" fill="url(#glowB)"/><circle cx="119" cy="50" r="7" fill="url(#glowA)"/><line x1="80" y1="0" x2="80" y2="90" stroke="#0a1018" stroke-width="1"/></svg>
+    <div class="ovl"><span class="sn">② 2-4</span><span class="ln">CU 正反打</span></div></div>
+    <div class="pbody"><h4>兩人對望一笑</h4><div class="tcam">正反打 · eyeline match</div>
+      <div class="dim"><b>編導</b><span>beat 收尾 reaction，確立雙主角羈絆——「決定留下來」</span></div>
+      <div class="dim"><b>動作</b><span>各自低頭→抬頭對望、會心笑、輕點頭；藍火/暖光同亮</span></div>
+      <div class="dim"><b>表情</b><span>阿凱剛毅暢快笑；阿俊溫暖眼角彎</span></div>
+      <div class="dim"><b>情緒</b><span>並肩默契・安定，為副歌蓄力</span></div></div></div>
+
+  </div>
+</div>
+
+<!-- ENV 3 -->
+<div class="env">
+  <div class="env-h"><span class="en serif">③</span><h3>沒人看好・苦練上坡</h3><span class="tc">0:30–0:44 · Verse 1b</span><span class="ly">"Project, Sub-sales… got to learn / a bridge you burn."</span><span class="chip">能量 中↗</span></div>
+  <div class="sb">
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#2c3742"/><use href="#skyline" x="0" y="54" width="160" height="36" fill="#222c36"/><g fill="#10161c"><use href="#umbrella" x="14" y="40" width="26" height="36"/><use href="#umbrella" x="44" y="42" width="26" height="34"/><use href="#umbrella" x="96" y="42" width="26" height="34"/><use href="#umbrella" x="126" y="40" width="26" height="36"/></g><use href="#fig" x="72" y="46" width="20" height="42" fill="#3a4650"/><g stroke="#5a6573" stroke-width=".7" opacity=".6"><path d="M20 0 16 90M60 0 56 90M100 0 96 90M140 0 136 90"/></g></svg>
+    <div class="ovl"><span class="sn">③ 3-1</span><span class="ln">WS 廣角微俯</span></div></div>
+    <div class="pbody"><h4>灰雨人潮逆流</h4><div class="tcam">逆向 dolly · 雨絲前景</div>
+      <div class="dim"><b>編導</b><span>建立「沒人看好」的世界，主角逆流而行</span></div>
+      <div class="dim"><b>動作</b><span>人潮整體流動（crowd 錯步），主角逆向擠行；雨打傘濺、地面水花、衣襬被風雨壓</span></div>
+      <div class="dim"><b>情緒</b><span>孤獨・逆境</span></div>
+      <div class="dim"><b>調色</b><span>質疑灰 + 黑傘 #10161C + 冷霓虹，低彩度</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#2a343f"/><rect x="10" y="12" width="40" height="66" fill="#1a222b"/><rect x="60" y="12" width="40" height="66" fill="#18202a"/><rect x="110" y="12" width="40" height="66" fill="#1a222b"/><line x1="50" y1="12" x2="50" y2="78" stroke="#0a0f15" stroke-width="2"/><line x1="100" y1="12" x2="100" y2="78" stroke="#0a0f15" stroke-width="2"/><use href="#fig" x="118" y="34" width="26" height="50" fill="#37424c"/><circle cx="128" cy="52" r="4" fill="url(#glowB)"/></svg>
+    <div class="ovl"><span class="sn">③ 3-2</span><span class="ln">MS 三連剪</span></div></div>
+    <div class="pbody"><h4>阿凱被連續關門</h4><div class="tcam">3 顆不同角度 · 硬切卡鼓點</div>
+      <div class="dim"><b>編導</b><span>三連快剪壓縮「被拒無數次」（got to learn）；第三顆接翻筆記</span></div>
+      <div class="dim"><b>動作</b><span>門關（剛體+風壓）→表情一沉→低頭翻筆記繼續（match-on-action）；雨衣滴水</span></div>
+      <div class="dim"><b>表情</b><span>失落一閃→咬牙→重新聚焦的決心；藍火閃爍不滅</span></div>
+      <div class="dim"><b>調色</b><span>冷灰 + 門縫漏光，藍火唯一暖度</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#2e3843"/><circle cx="80" cy="52" r="30" fill="url(#glowA)" opacity=".8"/><use href="#umbrella" x="56" y="14" width="50" height="58" fill="#1c252e"/><use href="#figF" x="62" y="40" width="30" height="48" fill="#2a3038"/><use href="#fig" x="86" y="44" width="22" height="44" fill="#333b43"/><g stroke="#5a6573" stroke-width=".6" opacity=".5"><path d="M30 0 26 90M120 0 116 90"/></g></svg>
+    <div class="ovl"><span class="sn">③ 3-3</span><span class="ln">CU 雙人</span></div></div>
+    <div class="pbody"><h4>阿俊雨中護夥伴</h4><div class="tcam">淺景深 · 雨絲前景 · 輕手持</div>
+      <div class="dim"><b>編導</b><span>阿俊暖男線低谷關懷——「接住每一個人」</span></div>
+      <div class="dim"><b>動作</b><span>側身把傘移向對方、自己半身淋雨、手搭其背；夥伴腳步停；暖暈護住兩人、雨在暈邊被照亮</span></div>
+      <div class="dim"><b>表情</b><span>阿俊堅定溫柔無責備；夥伴鬆動、眼眶紅</span></div>
+      <div class="dim"><b>調色</b><span>冷雨灰中阿俊暖琥珀光成救贖暖點</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#0e2236"/><rect x="40" y="10" width="80" height="40" fill="#0a1a2c"/><rect x="46" y="16" width="68" height="28" fill="#10314e"/><use href="#podium" x="68" y="34" width="40" height="56" fill="#5b87b8"/><g fill="#1a2733"><use href="#fig" x="14" y="62" width="16" height="26"/><use href="#fig" x="36" y="62" width="16" height="26"/><use href="#fig" x="120" y="62" width="16" height="26"/></g></svg>
+    <div class="ovl"><span class="sn">③ 3-4a</span><span class="ln">MS 略仰 · 穿插#1</span></div></div>
+    <div class="pbody"><h4>Marcus 培訓台一句話</h4><div class="tcam">略仰拍（威信）· 帶前景人頭</div>
+      <div class="dim"><b>編導</b><span>四老闆穿插#1——導師點醒，台下阿凱被點亮</span></div>
+      <div class="dim"><b>動作</b><span>Marcus 講話手勢（指向前/握拳），西裝布料隨動、麥克風在手；台下微前傾</span></div>
+      <div class="dim"><b>表情</b><span>自信、眼有遠光、嘴型清晰（可對嘴一句 hook）</span></div>
+      <div class="dim"><b>調色</b><span>品牌深藍舞台光 + 螢幕藍光</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#1a2430"/><use href="#fig" x="56" y="14" width="48" height="80" fill="#33414f"/><circle cx="80" cy="44" r="13" fill="url(#glowB)"/><circle cx="80" cy="44" r="4" fill="#dff0ff"/><path d="M80 44 L70 38M80 44 L90 38" stroke="#7cc0ff" stroke-width="1"/></svg>
+    <div class="ovl"><span class="sn">③ 3-4b</span><span class="ln">CU reaction</span></div></div>
+    <div class="pbody"><h4>阿凱被點亮</h4><div class="tcam">CU 臉 · 輕推近</div>
+      <div class="dim"><b>編導</b><span>reaction 鏡，因果可視化（老闆出現→藍火亮）</span></div>
+      <div class="dim"><b>動作</b><span>抬頭、瞳孔微縮、身體前傾，胸口藍火由弱轉強照亮下巴</span></div>
+      <div class="dim"><b>表情</b><span>眼神被點燃、嘴微張、眉上揚——覺醒微表情</span></div>
+      <div class="dim"><b>調色</b><span>臉被藍火由下打亮，眼神光 catchlight</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="80" height="90" fill="#1c2832"/><rect x="80" width="80" height="90" fill="#2a3038"/><circle cx="40" cy="46" r="14" fill="url(#glowB)"/><path d="M30 56 q10 -6 20 0 q-4 8 -10 8 q-6 0 -10 -8" fill="#2a3a48"/><circle cx="120" cy="46" r="16" fill="url(#glowA)"/><path d="M108 46 q12 -10 24 0 q-12 6 -24 0" fill="#3a3026"/></svg>
+    <div class="ovl"><span class="sn">③ 3-5</span><span class="ln">ECU 切 + build</span></div></div>
+    <div class="pbody"><h4>兩人握緊火/光</h4><div class="tcam">2 顆 ECU 快切 · punch-in</div>
+      <div class="dim"><b>編導</b><span>beat 收束集氣，直接炸進副歌④</span></div>
+      <div class="dim"><b>動作</b><span>阿凱握拳藍火被擠亮、阿俊張掌暖光漲大；衣料發力緊繃</span></div>
+      <div class="dim"><b>情緒</b><span>蓄勢待發・屏息吸氣（0:44 前一拍）</span></div>
+      <div class="dim"><b>調色</b><span>藍 vs 暖雙色蒙太奇，背景壓暗突光</span></div></div></div>
+
+  </div>
+</div>
+
+<!-- ENV 4 -->
+<div class="env">
+  <div class="env-h"><span class="en serif">④</span><h3>不停前進・蛻變</h3><span class="tc">0:44–1:15 · Chorus 1</span><span class="ly">"We evolve, we create! …sharpen the wing! …Think Big!"</span><span class="chip" style="background:#E9A23B;color:#3a2606">★ 第一高峰</span></div>
+  <div class="sb">
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#3a4a66"/><path d="M0 0 H160 V40 Q110 20 80 38 Q50 20 0 40 Z" fill="#566370"/><polygon points="80,30 96,90 64,90" fill="url(#glowG)" opacity=".9"/><circle cx="80" cy="32" r="10" fill="#fff4d6"/><use href="#fig" x="72" y="62" width="18" height="28" fill="#1c2838"/><g stroke="#cfe0f0" stroke-width=".5" opacity=".5"><path d="M70 40 68 90M90 40 92 90"/></g></svg>
+    <div class="ovl"><span class="sn">④ 4-1</span><span class="ln">crane up</span></div><div class="star">★ 0:44</div></div>
+    <div class="pbody"><h4>雲開神光</h4><div class="tcam">大廣角從街面升起仰望</div>
+      <div class="dim"><b>編導</b><span>全片第一情緒爆發，灰世界被光擊穿，精準卡副歌落點</span></div>
+      <div class="dim"><b>動作</b><span>雲層裂開翻湧、光柱掃地、殘雨在光中蒸騰、主角衣髮被光與風揚起</span></div>
+      <div class="dim"><b>表情</b><span>仰頭、瞇眼迎光、嘴角揚（如釋重負＋希望）</span></div>
+      <div class="dim"><b>調色</b><span>灰被藍 #0070E0 + 暖金神光擊穿（Good→Great）</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#41506a"/><ellipse cx="80" cy="80" rx="70" ry="14" fill="#34425a"/><use href="#fig" x="66" y="34" width="20" height="48" fill="#1d4f86"/><use href="#figF" x="80" y="34" width="22" height="48" fill="#b06f1e"/><circle cx="83" cy="52" r="10" fill="url(#glowB)" opacity=".7"/><g fill="#2c3a52"><use href="#fig" x="20" y="48" width="16" height="34"/><use href="#fig" x="124" y="48" width="16" height="34"/><use href="#fig" x="42" y="52" width="14" height="30"/><use href="#fig" x="104" y="52" width="14" height="30"/></g></svg>
+    <div class="ovl"><span class="sn">④ 4-2</span><span class="ln">環繞 oner 360°</span></div></div>
+    <div class="pbody"><h4>背對背召集人群</h4><div class="tcam">360° orbit · 前景路人掠過</div>
+      <div class="dim"><b>編導</b><span>一鏡到底展現「兩人號召、眾人響應」（evolve/create）</span></div>
+      <div class="dim"><b>動作</b><span>兩人張臂招呼，藍火/暖光外擴，人群錯步聚攏舉手；衣髮隨環繞風動</span></div>
+      <div class="dim"><b>表情</b><span>阿凱昂揚、阿俊熱情笑；周圍由觀望→點頭加入</span></div>
+      <div class="dim"><b>調色</b><span>藍金光在兩人間交匯，環境回暖</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#3c4a5e"/><use href="#bird" x="56" y="8" width="48" height="32" fill="url(#glowB)"/><g fill="#2a3646"><use href="#fig" x="14" y="50" width="12" height="32"/><use href="#fig" x="30" y="50" width="12" height="32"/><use href="#fig" x="46" y="50" width="12" height="32"/><use href="#fig" x="62" y="50" width="12" height="32"/><use href="#fig" x="78" y="50" width="12" height="32"/><use href="#fig" x="94" y="50" width="12" height="32"/><use href="#fig" x="110" y="50" width="12" height="32"/><use href="#fig" x="126" y="50" width="12" height="32"/></g></svg>
+    <div class="ovl"><span class="sn">④ 4-3</span><span class="ln">MS 縮時</span></div><div class="star">🪽 sharpen</div></div>
+    <div class="pbody"><h4>分享會從空到滿</h4><div class="tcam">固定機位 + time-lapse dissolve</div>
+      <div class="dim"><b>編導</b><span>可視化成長，卡 "sharpen the wing" 讓光鳥做「磨翅→振翅」招牌動作</span></div>
+      <div class="dim"><b>動作</b><span>人陸續入座（crowd 增生）、光鳥俯衝磨翅再上拔（弧線+拖尾）；橫幅微飄</span></div>
+      <div class="dim"><b>情緒</b><span>勢頭起來了・振奮</span></div>
+      <div class="dim"><b>調色</b><span>場內暖燈 + 藍金光鳥，漸亮漸暖</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#3a4a60"/><use href="#fig" x="68" y="22" width="24" height="56" fill="#00AEEF"/><g fill="#2c3a4e"><use href="#fig" x="16" y="48" width="16" height="36"/><use href="#fig" x="40" y="48" width="16" height="36"/><use href="#fig" x="108" y="48" width="16" height="36"/><use href="#fig" x="132" y="48" width="16" height="36"/></g><path d="M40 80 H120" stroke="#5b7da0" stroke-width="1" opacity=".5"/></svg>
+    <div class="ovl"><span class="sn">④ 4-4</span><span class="ln">MS→WS dolly-out</span></div><div class="star">Think Big</div></div>
+    <div class="pbody"><h4>Evon 起立鼓掌</h4><div class="tcam">snap dolly-out（演 Think Big）· 穿插#2</div>
+      <div class="dim"><b>編導</b><span>四老闆穿插#2 帶動能量；Think Big 鏡頭做快速放大格局</span></div>
+      <div class="dim"><b>動作</b><span>Evon 起身鼓掌（主），周圍骨牌式起立（crowd 連鎖），椅子衣物動</span></div>
+      <div class="dim"><b>表情</b><span>Evon 讚許笑、眼神鼓勵；全場興奮</span></div>
+      <div class="dim"><b>調色</b><span>天藍 #00AEEF 點綴 Evon，場內藍金漸盛</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#33425c"/><circle cx="80" cy="46" r="24" fill="url(#glowG)"/><circle cx="68" cy="46" r="13" fill="url(#glowB)" opacity=".9"/><circle cx="92" cy="46" r="13" fill="url(#glowA)" opacity=".9"/><use href="#fig" x="48" y="40" width="18" height="48" fill="#1c2c40"/><use href="#figF" x="94" y="40" width="20" height="48" fill="#2a2418"/></svg>
+    <div class="ovl"><span class="sn">④ 4-5</span><span class="ln">CU 雙人</span></div></div>
+    <div class="pbody"><h4>藍火 × 暖光交融</h4><div class="tcam">淺景深 · 焦點在交融處 · 輕推</div>
+      <div class="dim"><b>編導</b><span>雙主角羈絆與「事業×家庭」合一的核心視覺（future we trust）</span></div>
+      <div class="dim"><b>動作</b><span>兩光靠近→交纏→脈動成更大光球，照亮兩人臉；衣料被光暈微染</span></div>
+      <div class="dim"><b>表情</b><span>對望、堅定動容、眼含光</span></div>
+      <div class="dim"><b>調色</b><span>藍 × 琥珀 → 藍金，周圍 GI 互染</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#16263e"/><use href="#skyline" x="0" y="60" width="160" height="30" fill="#0e1c30"/><circle cx="80" cy="30" r="9" fill="url(#glowG)"/><text x="80" y="20" fill="#ffe6a8" font-size="9" font-family="DM Sans" font-weight="800" text-anchor="middle" opacity=".9">thousands→millions</text><g fill="#ffd98a"><circle cx="40" cy="40" r="1.4"/><circle cx="120" cy="44" r="1.4"/><circle cx="60" cy="34" r="1.2"/><circle cx="104" cy="36" r="1.2"/></g></svg>
+    <div class="ovl"><span class="sn">④ 4-6</span><span class="ln">crane out</span></div><div class="star">→ millions</div></div>
+    <div class="pbody"><h4>光字升空</h4><div class="tcam">crane out + 上升大廣角</div>
+      <div class="dim"><b>編導</b><span>副歌收尾、格局拉開，轉場⑤建立</span></div>
+      <div class="dim"><b>動作</b><span>光球升空、光字粒子書寫並飄散、城市燈點漸多、雲微飄</span></div>
+      <div class="dim"><b>情緒</b><span>壯大・希望無限</span></div>
+      <div class="dim"><b>調色</b><span>夜空 navy + 藍金光字/光球 bloom</span></div></div></div>
+
+  </div>
+</div>
+
+<!-- ENV 5 -->
+<div class="env">
+  <div class="env-h"><span class="en serif">⑤</span><h3>建立・培訓系統與團隊</h3><span class="tc">1:15–1:46 · Verse 2</span><span class="ly">"flipping the home… no lone wolves… education daily."</span><span class="chip">能量 中</span></div>
+  <div class="sb">
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="80" height="90" fill="#2b2f44"/><rect x="80" width="80" height="90" fill="#e9b96a"/><use href="#fig" x="26" y="34" width="20" height="48" fill="#4a4258"/><circle cx="36" cy="30" r="6" fill="#cdb6e0"/><g fill="#7a5a2a"><use href="#figF" x="92" y="36" width="20" height="46"/><use href="#fig" x="120" y="40" width="14" height="42"/><use href="#fig" x="134" y="44" width="10" height="38"/></g><rect x="108" y="58" width="8" height="8" fill="#5a3e16"/></svg>
+    <div class="ovl"><span class="sn">⑤ 5-1</span><span class="ln">對比剪</span></div></div>
+    <div class="pbody"><h4>炫耀 vs 交屋</h4><div class="tcam">a 廣角畸變冷光 / b 暖 MS 略仰 · 硬切</div>
+      <div class="dim"><b>編導</b><span>價值觀對照——別人炫錶炫車 vs 主角成就家庭（flipping the home）</span></div>
+      <div class="dim"><b>動作</b><span>a 炫耀者擺拍亮錶；b 主角遞鑰匙、家庭相擁、孩子奔向窗</span></div>
+      <div class="dim"><b>表情</b><span>a 空洞自滿；b 主角欣慰、家庭喜極、父母眼眶濕</span></div>
+      <div class="dim"><b>調色</b><span>a 冷藍紫低彩；b 暖琥珀陽光高彩</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#13314f"/><g fill="#0070E0" opacity=".9"><rect x="60" y="64" width="40" height="10" rx="2"/><rect x="64" y="50" width="32" height="10" rx="2"/><rect x="68" y="36" width="24" height="10" rx="2"/><rect x="72" y="24" width="16" height="9" rx="2"/></g><use href="#fig" x="20" y="36" width="22" height="50" fill="#0a2138"/><circle cx="31" cy="52" r="5" fill="url(#glowB)"/></svg>
+    <div class="ovl"><span class="sn">⑤ 5-2</span><span class="ln">MS + insert</span></div></div>
+    <div class="pbody"><h4>阿凱培訓塔</h4><div class="tcam">輕推軌 · insert CU 積木嵌合</div>
+      <div class="dim"><b>編導</b><span>阿凱「建系統」可視化——培訓流程化為發光藍積木堆塔</span></div>
+      <div class="dim"><b>動作</b><span>手一揮藍積木飛起嵌合（FX+主）、筆在白板寫（次）、塔漸高；學員抬頭追看</span></div>
+      <div class="dim"><b>表情</b><span>阿凱專注自信帶笑；學員恍然</span></div>
+      <div class="dim"><b>調色</b><span>品牌藍 #0070E0 積木 + 室內暖燈</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#16314c"/><rect x="0" y="60" width="160" height="30" fill="#0f2438"/><use href="#fig" x="30" y="30" width="24" height="56" fill="#5b87b8"/><g fill="#26415c"><use href="#fig" x="64" y="40" width="16" height="46"/><use href="#fig" x="86" y="38" width="16" height="48"/><use href="#fig" x="108" y="40" width="16" height="46"/></g><circle cx="100" cy="50" r="10" fill="url(#glowA)" opacity=".6"/></svg>
+    <div class="ovl"><span class="sn">⑤ 5-3</span><span class="ln">MS 手持跟拍 · 穿插#3</span></div></div>
+    <div class="pbody"><h4>Steve project 現場衝刺</h4><div class="tcam">手持動感 · 快節奏 · 前景人群掠過</div>
+      <div class="dim"><b>編導</b><span>四老闆穿插#3 實戰示範（fierce in the field）</span></div>
+      <div class="dim"><b>動作</b><span>Steve 帶隊快步、擊掌、與客戶握手成交；團隊歡呼（crowd）；文件旗幟動</span></div>
+      <div class="dim"><b>表情</b><span>Steve 銳利有衝勁、勝利笑；團隊亢奮</span></div>
+      <div class="dim"><b>調色</b><span>品牌藍環境 + 暖成交光；鋼藍灰 Steve</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#1c3344"/><use href="#tree" x="56" y="6" width="48" height="70" fill="url(#glowA)"/><g fill="#16384a"><use href="#fig" x="34" y="52" width="14" height="34"/><use href="#fig" x="52" y="54" width="14" height="32"/><use href="#fig" x="94" y="54" width="14" height="32"/><use href="#fig" x="112" y="52" width="14" height="34"/></g><g fill="#ffe6a8"><circle cx="70" cy="30" r="1.5"/><circle cx="90" cy="36" r="1.5"/><circle cx="80" cy="24" r="1.5"/></g></svg>
+    <div class="ovl"><span class="sn">⑤ 5-4</span><span class="ln">環繞微升</span></div></div>
+    <div class="pbody"><h4>團隊化為發光大樹</h4><div class="tcam">環繞微升 → 俯角看樹冠光</div>
+      <div class="dim"><b>編導</b><span>阿俊「立文化」可視化（no lone wolves），與阿凱的塔對位</span></div>
+      <div class="dim"><b>動作</b><span>眾人手搭手（接觸鏈），暖光匯向中心向上長成樹，葉光點落；衣髮隨升鏡風動</span></div>
+      <div class="dim"><b>表情</b><span>眾人溫暖笑、有歸屬；阿俊中央欣慰</span></div>
+      <div class="dim"><b>調色</b><span>暖琥珀樹光 + 品牌藍環境，藍金交織</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#2a3a44"/><rect x="0" y="0" width="60" height="90" fill="#1c2a36" opacity=".6"/><rect x="100" y="0" width="60" height="90" fill="#caa06a" opacity=".4"/><use href="#figF" x="24" y="32" width="22" height="52" fill="#caa468"/><g fill="#24333d"><use href="#fig" x="70" y="48" width="14" height="36"/><use href="#fig" x="90" y="48" width="14" height="36"/><use href="#fig" x="110" y="48" width="14" height="36"/></g><path d="M70 24 L120 24" stroke="#ffe6a8" stroke-width="1" opacity=".5"/></svg>
+    <div class="ovl"><span class="sn">⑤ 5-5</span><span class="ln">oner 縮時 · 穿插#4</span></div></div>
+    <div class="pbody"><h4>Yuki 授課・日夜流轉</h4><div class="tcam">緩慢推軌穿教室 · time-lapse lighting</div>
+      <div class="dim"><b>編導</b><span>四老闆穿插#4 文化與培育（education daily, soak it in）</span></div>
+      <div class="dim"><b>動作</b><span>Yuki 講課比劃（主）、新人抄筆記點頭（群）、窗外光影流轉、後景塔與樹生長</span></div>
+      <div class="dim"><b>表情</b><span>Yuki 親和耐心鼓勵；新人專注眼裡有光</span></div>
+      <div class="dim"><b>調色</b><span>暖白金 Yuki 調 + 流轉冷暖光交替</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#12283e"/><use href="#skyline" x="0" y="58" width="160" height="32" fill="#0c1d30"/><use href="#tower" x="66" y="20" width="34" height="70" fill="#1f6fae"/><circle cx="83" cy="26" r="8" fill="url(#glowG)"/><path d="M83 26 L150 16 M83 26 L150 40" stroke="#ffe6a8" stroke-width="2" opacity=".4"/></svg>
+    <div class="ovl"><span class="sn">⑤ 5-6</span><span class="ln">WS 廣角微仰</span></div></div>
+    <div class="pbody"><h4>燈塔光束射向全城</h4><div class="tcam">廣角微仰 · 緩升 · 光束引導線</div>
+      <div class="dim"><b>編導</b><span>塔（藍）與樹（暖）合體成燈塔，beat 收束擴向城市（guaranteed win）</span></div>
+      <div class="dim"><b>動作</b><span>塔頂燈點亮、光束旋掃、城市零星窗被掃亮、雲微動</span></div>
+      <div class="dim"><b>情緒</b><span>成形・蓄勢待發</span></div>
+      <div class="dim"><b>調色</b><span>藍金燈塔光 + navy 夜城</span></div></div></div>
+
+  </div>
+</div>
+
+<!-- ENV 6 -->
+<div class="env">
+  <div class="env-h"><span class="en serif">⑥</span><h3>家・傳承（阿俊主場・全慢動作）</h3><span class="tc">1:46–1:57 · Bridge</span><span class="ly">"a family foundation… the kinder the soul."</span><span class="chip" style="background:#E9A23B;color:#3a2606">柔軟拍</span></div>
+  <div class="sb">
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#5a3e1e"/><rect width="160" height="90" fill="url(#glowA)" opacity=".25"/><rect x="20" y="20" width="50" height="50" rx="2" fill="#ffcf80"/><line x1="45" y1="20" x2="45" y2="70" stroke="#a06a2a" stroke-width="1.5"/><line x1="20" y1="45" x2="70" y2="45" stroke="#a06a2a" stroke-width="1.5"/><use href="#figF" x="86" y="42" width="20" height="44" fill="#3a2810"/><use href="#fig" x="104" y="48" width="14" height="38" fill="#4a3414"/><use href="#fig" x="118" y="56" width="10" height="30" fill="#5a4018"/></svg>
+    <div class="ovl"><span class="sn">⑥ 6-1</span><span class="ln">CU→MS slow-mo</span></div></div>
+    <div class="pbody"><h4>新居團聚</h4><div class="tcam">慢動作 · 淺景深 · 暖光逆射輪廓</div>
+      <div class="dim"><b>編導</b><span>把「事業」切回「家」，全片最柔軟拍（a family foundation）</span></div>
+      <div class="dim"><b>動作</b><span>(slow-mo) 開燈、孩子奔撲父母、母親轉身微笑；窗紗飄、塵埃在光中浮、衣擺慢動</span></div>
+      <div class="dim"><b>表情</b><span>一家人幸福、眼角笑紋、母親含淚笑</span></div>
+      <div class="dim"><b>調色</b><span>暖琥珀 #E9A23B + 家窗橘，高 key 柔光</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#3a2c16"/><use href="#figF" x="40" y="30" width="26" height="56" fill="#2a1e0c"/><use href="#fig" x="80" y="38" width="22" height="48" fill="#3a2c14"/><circle cx="90" cy="52" r="10" fill="url(#glowA)"/><circle cx="90" cy="52" r="3.5" fill="#fff0d6"/></svg>
+    <div class="ovl"><span class="sn">⑥ 6-2</span><span class="ln">CU slow-mo</span></div><div class="star">kinder soul</div></div>
+    <div class="pbody"><h4>阿俊把暖光別在新人胸口</h4><div class="tcam">極淺景深 · 焦點在胸口光 · 輕推</div>
+      <div class="dim"><b>編導</b><span>阿俊傳承時刻——「越強越柔軟」（the kinder the soul）</span></div>
+      <div class="dim"><b>動作</b><span>(slow-mo) 雙手捧光輕按新人胸口、光感應漲亮，新人低頭看光再抬頭、淚滑落（sim）</span></div>
+      <div class="dim"><b>表情</b><span>阿俊溫定如父兄；新人破涕為笑、眼眶含光</span></div>
+      <div class="dim"><b>調色</b><span>暖琥珀主導，新人臉被胸口光提亮</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#152a3e"/><use href="#fig" x="40" y="30" width="24" height="56" fill="#0c2138"/><use href="#fig" x="84" y="34" width="20" height="52" fill="#13304c"/><circle cx="74" cy="52" r="8" fill="url(#glowB)"/><circle cx="92" cy="52" r="6" fill="url(#glowB)" opacity=".8"/><path d="M74 52 L92 52" stroke="#7cc0ff" stroke-width="1.5"/></svg>
+    <div class="ovl"><span class="sn">⑥ 6-3</span><span class="ln">CU slow-mo</span></div><div class="star">keep team</div></div>
+    <div class="pbody"><h4>阿凱把藍火遞給年輕 leader</h4><div class="tcam">焦點在交接的火 · 輕推</div>
+      <div class="dim"><b>編導</b><span>阿凱傳承時刻（系統/精進複製），與 6-2 對位（keeping the team）</span></div>
+      <div class="dim"><b>動作</b><span>(slow-mo) 手托藍火遞出、年輕人雙手承接、火入胸口漲亮、年輕人挺直</span></div>
+      <div class="dim"><b>表情</b><span>阿凱欣慰信任；年輕人眼神被點燃、堅定</span></div>
+      <div class="dim"><b>調色</b><span>藍火為主光，臉被藍光提亮，catchlight</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#0e2238"/><g><circle cx="80" cy="60" r="4" fill="#ffd98a"/><circle cx="56" cy="56" r="3" fill="#7cc0ff"/><circle cx="104" cy="56" r="3" fill="#ffd98a"/><circle cx="40" cy="50" r="2.5" fill="#7cc0ff"/><circle cx="120" cy="50" r="2.5" fill="#ffd98a"/><circle cx="64" cy="44" r="2" fill="#ffd98a"/><circle cx="96" cy="44" r="2" fill="#7cc0ff"/><circle cx="28" cy="42" r="1.6" fill="#7cc0ff"/><circle cx="132" cy="42" r="1.6" fill="#ffd98a"/></g><g fill="#0a1c30"><use href="#fig" x="30" y="62" width="12" height="26"/><use href="#fig" x="74" y="60" width="12" height="28"/><use href="#fig" x="116" y="62" width="12" height="26"/></g></svg>
+    <div class="ovl"><span class="sn">⑥ 6-4</span><span class="ln">WS build crane up</span></div></div>
+    <div class="pbody"><h4>燈火幾何擴散</h4><div class="tcam">廣角上升 · 俯瞰擴散為主體</div>
+      <div class="dim"><b>編導</b><span>把「複製」可視化，build 直衝大副歌⑦</span></div>
+      <div class="dim"><b>動作</b><span>燈火接力連鎖點亮（crowd+FX 連鎖），人群歡騰，鏡頭加速上升</span></div>
+      <div class="dim"><b>情緒</b><span>燎原前集氣・屏息上升</span></div>
+      <div class="dim"><b>調色</b><span>藍金燈火在 navy 場中爆發式增多</span></div></div></div>
+
+  </div>
+</div>
+
+<!-- ENV 7 -->
+<div class="env">
+  <div class="env-h"><span class="en serif">⑦</span><h3>遍佈全馬・燈海</h3><span class="tc">1:57–2:25 · Chorus 2</span><span class="ly">"…thousands to millions for us!"</span><span class="chip" style="background:#E9A23B;color:#3a2606">★ 最高峰</span></div>
+  <div class="sb">
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#0a1828"/><path d="M0 30 Q40 18 80 30 Q120 42 160 30 V0 H0 Z" fill="#1a2c42" opacity=".8"/><use href="#bird" x="62" y="14" width="40" height="26" fill="url(#glowB)"/><g fill="#ffd98a"><circle cx="30" cy="64" r="2"/><circle cx="50" cy="70" r="2"/><circle cx="74" cy="66" r="2"/><circle cx="96" cy="72" r="2"/><circle cx="120" cy="66" r="2"/><circle cx="140" cy="70" r="2"/><circle cx="40" cy="78" r="1.6"/><circle cx="108" cy="80" r="1.6"/></g></svg>
+    <div class="ovl"><span class="sn">⑦ 7-1</span><span class="ln">crane→空拍</span></div><div class="star">★ 1:57</div></div>
+    <div class="pbody"><h4>穿雲・全馬點燈</h4><div class="tcam">穿雲接空拍俯衝 · 體積雲縱深</div>
+      <div class="dim"><b>編導</b><span>全片視覺總爆發，精準卡 1:57 大副歌落點</span></div>
+      <div class="dim"><b>動作</b><span>穿雲、城市燈點連鎖亮起、雲被氣流撕開、光鳥領頭穿越</span></div>
+      <div class="dim"><b>情緒</b><span>澎湃・起飛・全身雞皮疙瘩</span></div>
+      <div class="dim"><b>調色</b><span>navy 夜 + 藍金燈點爆亮 + 雲體積光</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#13243a"/><g fill="#0e2c44"><use href="#fig" x="8" y="50" width="12" height="34"/><use href="#fig" x="24" y="52" width="12" height="32"/><use href="#fig" x="40" y="50" width="12" height="34"/><use href="#fig" x="56" y="52" width="12" height="32"/><use href="#fig" x="72" y="50" width="12" height="34"/><use href="#fig" x="88" y="52" width="12" height="32"/><use href="#fig" x="104" y="50" width="12" height="34"/><use href="#fig" x="120" y="52" width="12" height="32"/><use href="#fig" x="136" y="50" width="12" height="34"/></g><g fill="#ffd98a"><circle cx="14" cy="48" r="2.5"/><circle cx="46" cy="48" r="2.5"/><circle cx="78" cy="48" r="2.5"/><circle cx="110" cy="48" r="2.5"/><circle cx="142" cy="48" r="2.5"/></g><g fill="#7cc0ff"><circle cx="30" cy="50" r="2.2"/><circle cx="94" cy="50" r="2.2"/><circle cx="126" cy="50" r="2.2"/></g></svg>
+    <div class="ovl"><span class="sn">⑦ 7-2</span><span class="ln">群眾 oner</span></div></div>
+    <div class="pbody"><h4>人潮光河</h4><div class="tcam">穿行再升起 · 景深變化 · hero 穿插</div>
+      <div class="dim"><b>編導</b><span>從天到地展現 2,000 人氣勢，crowd 高潮</span></div>
+      <div class="dim"><b>動作</b><span>人群舉燈、揮手、跟唱（staggered），光河流動，旗幟橫幅動</span></div>
+      <div class="dim"><b>表情</b><span>近景 hero 激動含淚笑、張口同唱 hook（對嘴）</span></div>
+      <div class="dim"><b>調色</b><span>藍金燈海 + 舞台光，暖金為主</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#0c1c30"/><use href="#towers" x="56" y="14" width="48" height="76" fill="#1e4870"/><g fill="#ffe6a8" opacity=".9"><circle cx="72" cy="40" r="1.4"/><circle cx="72" cy="52" r="1.4"/><circle cx="88" cy="44" r="1.4"/><circle cx="88" cy="56" r="1.4"/></g><text x="24" y="24" fill="#ffd98a" font-size="13" font-weight="800" font-family="DM Sans">67→2000</text></svg>
+    <div class="ovl"><span class="sn">⑦ 7-3</span><span class="ln">WS 廣角微仰</span></div><div class="star">millions</div></div>
+    <div class="pbody"><h4>地標點亮 + 光字</h4><div class="tcam">地標為主體 · 光字飄過前景</div>
+      <div class="dim"><b>編導</b><span>數據可視化高潮，量化八年成長（thousands to millions）</span></div>
+      <div class="dim"><b>動作</b><span>地標逐層亮燈、光字粒子書寫飄散、煙花光點升騰</span></div>
+      <div class="dim"><b>情緒</b><span>成就巔峰・震撼</span></div>
+      <div class="dim"><b>調色</b><span>navy 夜空 + 地標藍金光 + 光字 bloom</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#050d18"/><circle cx="80" cy="46" r="44" fill="#0a1828"/><use href="#malaysia" x="14" y="28" width="132" height="40" fill="url(#glowA)"/><g fill="#fff" opacity=".4"><circle cx="30" cy="16" r="1"/><circle cx="130" cy="20" r="1"/><circle cx="140" cy="70" r="1"/></g></svg>
+    <div class="ovl"><span class="sn">⑦ 7-4</span><span class="ln">太空 WS</span></div></div>
+    <div class="pbody"><h4>衛星視角・全馬燈海</h4><div class="tcam">太空 WS 緩推/旋轉 · 地圖燈海主體</div>
+      <div class="dim"><b>編導</b><span>「遍佈全馬」終極畫面，格局拉到最大（Think Big）</span></div>
+      <div class="dim"><b>動作</b><span>燈海仍擴散增亮、雲流動、大氣輝光脈動</span></div>
+      <div class="dim"><b>情緒</b><span>遼闊・史詩・自豪到極點</span></div>
+      <div class="dim"><b>調色</b><span>深空 navy + 馬來西亞藍金燈海 + 大氣藍邊光</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#12243a"/><circle cx="80" cy="50" r="40" fill="url(#glowA)" opacity=".35"/><g fill="#0a1c30"><use href="#fig" x="44" y="34" width="16" height="52"/><use href="#figF" x="60" y="32" width="18" height="54"/><use href="#fig" x="80" y="34" width="16" height="52"/><use href="#fig" x="96" y="34" width="16" height="52"/></g><g fill="#1a3450"><use href="#fig" x="12" y="50" width="14" height="36"/><use href="#fig" x="134" y="50" width="14" height="36"/><use href="#fig" x="28" y="54" width="12" height="32"/><use href="#fig" x="120" y="54" width="12" height="32"/></g></svg>
+    <div class="ovl"><span class="sn">⑦ 7-5</span><span class="ln">俯衝 dive-in → MS</span></div></div>
+    <div class="pbody"><h4>俯衝回人群・群像</h4><div class="tcam">高速俯衝接 MS 穩定 · 環繞微動</div>
+      <div class="dim"><b>編導</b><span>把宏大收回到「人」，六人同框（四老闆＋雙主角），呼應起點與今天</span></div>
+      <div class="dim"><b>動作</b><span>六人並肩舉燈/握拳，人群環繞歡呼揮燈，衣物旗幟動；藍金光自中心擴散</span></div>
+      <div class="dim"><b>表情</b><span>四老闆欣慰自豪、阿凱昂揚、阿俊熱淚溫暖</span></div>
+      <div class="dim"><b>調色</b><span>藍金燈海環繞，六人被中心光提亮</span></div></div></div>
+
+  </div>
+</div>
+
+<!-- ENV 8 -->
+<div class="env">
+  <div class="env-h"><span class="en serif">⑧</span><h3>願景・全場高喊</h3><span class="tc">2:25–2:33 · Outro</span><span class="ly">"PropNex! Good to Great! Think Big! …Let's go!"</span><span class="chip">能量 收尾</span></div>
+  <div class="sb">
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#081424"/><use href="#star" x="60" y="6" width="40" height="40" fill="url(#glowG)"/><use href="#star" x="70" y="16" width="20" height="20" fill="#fff"/><path d="M80 46 Q60 70 40 88 M80 46 Q100 70 120 88" stroke="#ffd98a" stroke-width="1" fill="none" opacity=".4"/><g fill="#ffd98a"><circle cx="50" cy="60" r="1.4"/><circle cx="110" cy="62" r="1.4"/><circle cx="80" cy="72" r="1.6"/></g></svg>
+    <div class="ovl"><span class="sn">⑧ 8-1</span><span class="ln">crane up</span></div><div class="star">Good→Great</div></div>
+    <div class="pbody"><h4>燈海凝成北極星</h4><div class="tcam">大廣角隨光上升仰望 · 星為頂點</div>
+      <div class="dim"><b>編導</b><span>願景昇華，卡 outro 高喊「Good to Great」</span></div>
+      <div class="dim"><b>動作</b><span>燈河螺旋上升匯聚、星體成形脈動爆亮、餘光灑落</span></div>
+      <div class="dim"><b>情緒</b><span>昇華・信念成真</span></div>
+      <div class="dim"><b>調色</b><span>暖白金 #FFF4D6 北極星 + navy 夜空 + 藍金餘光</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#0a1626"/><use href="#star" x="72" y="2" width="16" height="16" fill="url(#glowG)"/><g><use href="#win" x="14" y="40" width="20" height="20" fill="#ffcf80"/><use href="#win" x="44" y="46" width="18" height="18" fill="#ffd98a"/><use href="#win" x="72" y="44" width="18" height="18" fill="#ffcf80"/><use href="#win" x="100" y="48" width="18" height="18" fill="#ffd98a"/><use href="#win" x="128" y="42" width="20" height="20" fill="#ffcf80"/></g><g fill="#5a3e16"><use href="#fig" x="20" y="46" width="8" height="14"/><use href="#fig" x="106" y="54" width="7" height="12"/></g></svg>
+    <div class="ovl"><span class="sn">⑧ 8-2</span><span class="ln">蒙太奇</span></div><div class="star">Think Big</div></div>
+    <div class="pbody"><h4>星光照亮萬家窗</h4><div class="tcam">多顆暖窗快剪 + 城市 WS</div>
+      <div class="dim"><b>編導</b><span>把願景落到「千萬家庭」，全片主題收束（事業×家庭）</span></div>
+      <div class="dim"><b>動作</b><span>窗燈接連亮（連鎖）、窗內家庭擁抱/用餐/孩子跑（剪影）、星光灑落</span></div>
+      <div class="dim"><b>情緒</b><span>溫暖・圓滿・被照亮的千萬家</span></div>
+      <div class="dim"><b>調色</b><span>暖橘家窗 + 暖白金星光 + navy 夜城</span></div></div></div>
+
+  <div class="panel"><div class="frame">
+    <svg viewBox="0 0 160 90"><rect width="160" height="90" fill="#0e2038"/><circle cx="80" cy="50" r="50" fill="url(#glowA)" opacity=".4"/><g fill="#081626"><use href="#fig" x="30" y="34" width="15" height="52"/><use href="#fig" x="48" y="32" width="15" height="54"/><use href="#figF" x="66" y="32" width="17" height="54"/><use href="#fig" x="86" y="32" width="15" height="54"/><use href="#fig" x="103" y="34" width="15" height="52"/></g><circle cx="80" cy="58" r="13" fill="url(#glowG)"/><circle cx="80" cy="58" r="4" fill="#fff"/></svg>
+    <div class="ovl"><span class="sn">⑧ 8-3</span><span class="ln">MS 群像 → freeze</span></div><div class="star">Let's go!</div></div>
+    <div class="pbody"><h4>六人遞光向鏡頭・定格</h4><div class="tcam">正面 push-in 後定格 · 淺景深燈海背景</div>
+      <div class="dim"><b>編導</b><span>打破第四面牆把信念交給觀眾，卡「Let's go!」+ Logo/Slogan</span></div>
+      <div class="dim"><b>動作</b><span>六人轉身、伸手把光推向鏡頭、光在鏡頭前漲亮、衣髮定格前最後一動</span></div>
+      <div class="dim"><b>表情</b><span>六人堅定溫暖笑、直視鏡頭、眼裡有光</span></div>
+      <div class="dim"><b>調色</b><span>藍金光充滿前景，定格後浮現 Logo 與 Slogan 光字</span></div></div></div>
+
+  </div>
+</div>
+
+</div>
+</section>
+
+<!-- ===== 7. PIPELINE / NEXT ===== -->
+<section class="sec" id="pipe"><div class="wrap">
+  <div class="sec-h">
+    <div class="sec-n serif">07</div>
+    <div class="sec-t"><div class="eyebrow">Production Pipeline · Next Steps</div><h2>製作流程與下一步</h2>
+      <p>從這份提案到成片，比照 Pixar/Universal 的四階段、13 工序（完整版見 <code>04_CG_PIPELINE.md</code>）。</p></div>
+  </div>
+  <div class="steps">
+    <div class="step"><h4>開發 Development</h4><p>故事 / 劇本 / Treatment（本提案）。Gate A：四老闆 + 雙主角 leader 對故事簽核。</p></div>
+    <div class="step"><h4>前期 Pre-Production</h4><p>角色 model sheet · 視覺開發 · 色彩劇本 · 分鏡 · Animatic（鎖音樂鎖時長）。</p></div>
+    <div class="step"><h4>製作 Production</h4><p>Layout · 建模綁定 · 材質 · 動畫 + 群眾 · FX · 燈光算圖。</p></div>
+    <div class="step"><h4>後期 Post</h4><p>合成 · 剪輯 · 調色 · 音樂混音 · 成片 Master（活動現場大屏試播）。</p></div>
+  </div>
+
+  <div style="margin-top:22px" class="grid" >
+    <div class="note"><b>⚠️ 肖像合規：</b>四位老闆（Marcus Teng / Evon Heng / Steve Tong / Yuki Wan）為真實公開人物且本片對外，所有出場鏡頭需依官方照片做風格化寫實 model sheet，並取得本人肖像使用授權，方可進入動畫工序。</div>
+  </div>
+
+  <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:20px">
+    <div class="card"><h3>製作路線</h3><p class="muted">A 工作室級（Maya/Houdini/RenderMan，4–6 月）· <b style="color:#fff">B 獨立製作（Blender，10–12 週，推薦）</b> · C AI 輔助快速版（4–8 週）。三條路線美術規格相容。</p></div>
+    <div class="card"><h3>待補素材</h3><p class="muted">① 兩位 leader 真名/形象 ② 四老闆多角度官方照 + 授權 ③ PropNex Logo 向量檔/品牌字 ④ 成長數據與活動日期 ⑤ 歌曲逐字 timecode（animatic 鎖定）。</p></div>
+  </div>
+</div></section>
+
+<footer class="foot"><div class="wrap">
+  <div class="serif">Sharpen the Wing</div>
+  <p>PropNex Malaysia · Animated Film Pitch Bible · v1.0</p>
+  <p style="margin-top:8px;color:#5a6b80">Good to Great · Think Big · Thousands to Millions · 事業成功，家庭幸福</p>
+  <p style="margin-top:14px;font-size:11.5px;color:#3f4f63">本提案為內部創意文件；人名為佔位、四位老闆肖像需簽核。風格參考僅供內部溝通，成片不得複製受版權保護之角色或畫面。</p>
+</div></footer>
+
+</body>
+</html>
