@@ -47,13 +47,13 @@ mv-production/
 
 ## 目前進度（更新於本次 session）
 - [x] 00–09 製作文件 + 提案 HTML 完成
-- [x] 製作級拍攝腳本：標準 + 全片鏡頭母表、SEQ01、SEQ02 完成（逐幀）
-- [ ] **進行中**：SEQ03–SEQ08 逐幀分解（用 SEQ01/02 的同一格式補完）
+- [x] 製作級拍攝腳本：標準 + 全片鏡頭母表 + **SEQ01–SEQ08 全部逐幀完成**（89 顆鏡頭、3,672 幀）
+- [ ] 可選：把 shooting-script 生成 HTML 檢視器（比 pitch/ 更細）；把 pitch HTML 升級到 shooting-script 深度
 - [ ] 待用戶提供：四老闆官方多角度照+授權、leader 真名/形象、Logo 向量檔、歌曲逐字 timecode
 
 ## 待辦/下一步（給接手的 Claude）
-1. 依 `shooting-script/00_STANDARD_AND_SHOTLIST.md` 的母表，逐一把 SEQ03–08 寫到 SEQ01/02 的深度。
-2. 完成後可選：把 shooting-script 生成一個 HTML 檢視器（比 pitch/ 更細）。
+1. SEQ01–08 逐幀腳本已全部完成；若用戶要更深，可為「每一顆鏡頭」都補逐幀 keyframe 表（目前僅 hero 鏡有）。
+2. 可選：把 shooting-script 生成一個 HTML 檢視器（比 pitch/ 更細）。
 3. 任何牽涉真人老闆形象、品牌合規、預算的決定，先問用戶 Bowie。
 
 ## 工作慣例
