@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PropNex Core Value — C.A.R.E Letter Game</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   PropNex brand palette (aligned with the PNX department plan)
+   ============================================================ */
+:root{
+  --navy:#0A2540;
+  --navy2:#0D3B66;
+  --blue:#0070E0;
+  --sky:#00AEEF;
+  --ice:#E8F4FD;
+  --teal:#1E9E8A;
+  --teal2:#177E6E;
+  --teal3:#4FC7B2;
+  --white:#FFFFFF;
+  --good:#12B76A;
+  --good2:#0B8F52;
+  --bad:#E5484D;
+  --bad2:#B3262B;
+  --gold:#FCD34D;
+  --cols:16;
+  --rows:4;
+  --tile-w:82px;
+  --tile-h:104px;
+  --gap:7px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;background:#061a30}
+body{
+  font-family:'DM Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  color:#fff;-webkit-font-smoothing:antialiased;user-select:none;
+}
+
+/* ---------- 16:9 fixed stage, scaled to fit any monitor ---------- */
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#061a30}
+#stage{
+  width:1920px;height:1080px;position:relative;overflow:hidden;flex:none;
+  transform-origin:center center;
+  background:
+    radial-gradient(ellipse 60% 45% at 50% 0%, rgba(0,174,239,.30), transparent 70%),
+    radial-gradient(ellipse 45% 40% at 10% 95%, rgba(0,112,224,.28), transparent 70%),
+    radial-gradient(ellipse 45% 40% at 90% 95%, rgba(0,112,224,.28), transparent 70%),
+    linear-gradient(180deg,#0A2540 0%,#0D3B66 55%,#0A2540 100%);
+}
+/* stage floor + spotlight lines */
+#stage::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg width='90' height='90' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='45' cy='45' r='1.4' fill='%23ffffff' opacity='.07'/%3E%3C/svg%3E");
+}
+.floor{
+  position:absolute;left:0;right:0;bottom:0;height:260px;pointer-events:none;
+  background:linear-gradient(180deg,transparent,rgba(0,112,224,.28) 60%,rgba(0,174,239,.45));
+  -webkit-mask:linear-gradient(180deg,transparent,#000 40%);mask:linear-gradient(180deg,transparent,#000 40%);
+}
+.floor::before,.floor::after{
+  content:'';position:absolute;left:8%;right:8%;height:3px;border-radius:3px;
+  background:linear-gradient(90deg,transparent,var(--sky),transparent);opacity:.7;filter:blur(.4px);
+}
+.floor::before{bottom:150px}.floor::after{bottom:112px;left:16%;right:16%;opacity:.4}
+
+.side-panel{
+  position:absolute;top:135px;width:210px;height:560px;border-radius:20px;
+  background:linear-gradient(160deg,rgba(0,174,239,.20),rgba(0,112,224,.06));
+  border:1px solid rgba(0,174,239,.35);box-shadow:0 0 40px rgba(0,174,239,.18),inset 0 0 40px rgba(0,174,239,.08);
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  font-family:'Montserrat',sans-serif;font-weight:800;font-size:26px;line-height:1.35;letter-spacing:2px;
+  color:rgba(255,255,255,.85);text-transform:uppercase;text-shadow:0 0 18px rgba(0,174,239,.6);
+}
+.side-panel.l{left:36px}.side-panel.r{right:36px}
+.side-panel span{display:block}
+.side-panel em{display:block;width:60px;height:3px;background:var(--sky);margin:16px auto 0;border-radius:2px;font-style:normal}
+
+/* ---------- header ---------- */
+header{position:absolute;top:22px;left:0;right:0;text-align:center;z-index:2}
+.brand{font-family:'Montserrat',sans-serif;font-weight:900;font-size:30px;letter-spacing:.5px;color:#fff}
+.brand small{display:block;font-weight:700;font-size:12px;letter-spacing:6px;color:rgba(255,255,255,.75);margin-top:2px}
+h1{
+  margin-top:8px;font-family:'Montserrat',sans-serif;font-weight:900;font-size:78px;line-height:1;letter-spacing:-1px;
+  color:#fff;text-shadow:0 6px 30px rgba(0,0,0,.45),0 0 40px rgba(0,174,239,.35);
+}
+h1 b{
+  background:linear-gradient(180deg,#8EE3FF 0%,var(--sky) 55%,var(--blue) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 22px rgba(0,174,239,.55));
+}
+
+/* ---------- board ---------- */
+.board-wrap{position:absolute;top:238px;left:50%;transform:translateX(-50%);z-index:3}
+.board{
+  position:relative;padding:22px;border-radius:28px;
+  background:linear-gradient(180deg,#0B2F55,#0A2540);
+  border:4px solid var(--sky);
+  box-shadow:0 0 0 6px rgba(0,174,239,.18),0 0 60px rgba(0,174,239,.45),0 30px 80px rgba(0,0,0,.5),inset 0 0 60px rgba(0,0,0,.35);
+  transition:box-shadow .35s,border-color .35s;
+}
+.board.good{border-color:var(--good);box-shadow:0 0 0 6px rgba(18,183,106,.25),0 0 90px rgba(18,183,106,.75),0 30px 80px rgba(0,0,0,.5),inset 0 0 60px rgba(0,0,0,.35)}
+.board.bad{border-color:var(--bad);box-shadow:0 0 0 6px rgba(229,72,77,.25),0 0 90px rgba(229,72,77,.75),0 30px 80px rgba(0,0,0,.5),inset 0 0 60px rgba(0,0,0,.35);animation:shake .5s}
+@keyframes shake{
+  0%,100%{transform:translateX(0)}15%{transform:translateX(-14px)}30%{transform:translateX(12px)}
+  45%{transform:translateX(-9px)}60%{transform:translateX(7px)}75%{transform:translateX(-4px)}
+}
+.grid{
+  display:grid;grid-template-columns:repeat(var(--cols),var(--tile-w));grid-auto-rows:var(--tile-h);gap:var(--gap);
+  perspective:1400px;
+}
+.tile{position:relative;width:var(--tile-w);height:var(--tile-h);border-radius:6px}
+.tile .inner{
+  position:absolute;inset:0;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.75,.25,1);border-radius:6px;
+}
+.tile.flipped .inner{transform:rotateY(180deg)}
+.face{
+  position:absolute;inset:0;border-radius:6px;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:inset 0 0 0 2px rgba(0,0,0,.08),0 4px 10px rgba(0,0,0,.35);
+}
+/* teal "off" tile with chevron */
+.face.front{
+  background:linear-gradient(180deg,var(--teal) 0%,var(--teal2) 100%);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='40' viewBox='0 0 44 40'%3E%3Cpath d='M4 18 L22 4 L40 18' fill='none' stroke='%234FC7B2' stroke-width='5' stroke-linecap='round' stroke-linejoin='round' opacity='.85'/%3E%3Cpath d='M4 34 L22 20 L40 34' fill='none' stroke='%234FC7B2' stroke-width='5' stroke-linecap='round' stroke-linejoin='round' opacity='.85'/%3E%3C/svg%3E"),
+    linear-gradient(180deg,var(--teal) 0%,var(--teal2) 100%);
+  background-repeat:no-repeat;background-position:center;background-size:44px 40px,100% 100%;
+}
+/* white blank tile (a hidden letter lives here) */
+.tile.blank .face.front{
+  background:linear-gradient(180deg,#FFFFFF 0%,#E9F0F7 100%);
+  box-shadow:inset 0 0 0 2px rgba(10,37,64,.10),inset 0 -6px 0 rgba(10,37,64,.06),0 4px 10px rgba(0,0,0,.35);
+}
+.face.back{
+  transform:rotateY(180deg);
+  background:linear-gradient(180deg,#FFFFFF 0%,#E9F0F7 100%);
+  color:var(--navy);font-family:'Montserrat',sans-serif;font-weight:900;font-size:64px;line-height:1;
+  box-shadow:inset 0 0 0 2px rgba(10,37,64,.10),inset 0 -6px 0 rgba(10,37,64,.06),0 4px 10px rgba(0,0,0,.35);
+  transition:background .5s,color .5s,box-shadow .5s;
+}
+.tile.sym .face.back{font-size:56px;color:var(--blue)}
+/* correct hit → green pop, then settles back to white */
+.tile.hit .face.back{
+  background:linear-gradient(180deg,#34D399 0%,var(--good) 60%,var(--good2) 100%);color:#fff;
+  box-shadow:0 0 0 3px rgba(18,183,106,.7),0 0 34px rgba(18,183,106,.95),0 4px 10px rgba(0,0,0,.35);
+}
+.tile.hit{animation:pop .7s .35s}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.14)}100%{transform:scale(1)}}
+
+/* ---------- feedback pill ---------- */
+.pill-wrap{position:absolute;top:748px;left:50%;transform:translateX(-50%);z-index:3}
+.pill{
+  display:flex;align-items:center;gap:26px;min-width:900px;height:96px;padding:0 44px 0 30px;border-radius:60px;
+  background:linear-gradient(180deg,rgba(10,37,64,.95),rgba(6,26,48,.95));
+  border:3px solid var(--sky);box-shadow:0 0 34px rgba(0,174,239,.45),0 18px 40px rgba(0,0,0,.45);
+  transition:border-color .3s,box-shadow .3s;
+}
+.pill.good{border-color:var(--good);box-shadow:0 0 44px rgba(18,183,106,.7),0 18px 40px rgba(0,0,0,.45)}
+.pill.bad{border-color:var(--bad);box-shadow:0 0 44px rgba(229,72,77,.7),0 18px 40px rgba(0,0,0,.45)}
+.pill .key{
+  width:66px;height:66px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;
+  font-family:'Montserrat',sans-serif;font-weight:900;font-size:40px;color:#fff;
+  background:linear-gradient(180deg,var(--sky),var(--blue));box-shadow:0 0 22px rgba(0,174,239,.6);
+  transition:background .3s,transform .2s;
+}
+.pill.good .key{background:linear-gradient(180deg,#34D399,var(--good2));box-shadow:0 0 22px rgba(18,183,106,.8)}
+.pill.bad .key{background:linear-gradient(180deg,#F87171,var(--bad2));box-shadow:0 0 22px rgba(229,72,77,.8)}
+.pill .bar{width:3px;height:52px;background:rgba(255,255,255,.35);border-radius:2px;flex:none}
+.pill .msg{font-family:'Montserrat',sans-serif;font-weight:800;font-size:42px;letter-spacing:.2px;white-space:nowrap}
+.pill .sub{margin-left:auto;font-weight:600;font-size:20px;color:rgba(255,255,255,.6);letter-spacing:1px;white-space:nowrap}
+.pill.bump .key{animation:bump .35s}
+@keyframes bump{0%{transform:scale(1)}50%{transform:scale(1.25)}100%{transform:scale(1)}}
+
+/* ---------- host control panel ---------- */
+.host{
+  position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:5;
+  width:1560px;padding:14px 22px;border-radius:20px;
+  background:rgba(4,18,36,.82);backdrop-filter:blur(14px);border:1px solid rgba(0,174,239,.35);
+  box-shadow:0 14px 40px rgba(0,0,0,.45);display:flex;align-items:center;gap:22px;
+  transition:opacity .3s,transform .3s;
+}
+.host.hidden{opacity:0;pointer-events:none;transform:translate(-50%,40px)}
+.host .lab{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:700;margin-bottom:6px}
+.host .grp{display:flex;flex-direction:column}
+.host .row{display:flex;gap:8px;align-items:center}
+.pz{
+  display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:12px;cursor:pointer;
+  background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.12);color:#fff;transition:.2s;font-family:'DM Sans',sans-serif;
+}
+.pz:hover{background:rgba(0,174,239,.18);border-color:rgba(0,174,239,.6)}
+.pz.active{background:linear-gradient(180deg,rgba(0,174,239,.35),rgba(0,112,224,.35));border-color:var(--sky);box-shadow:0 0 18px rgba(0,174,239,.45)}
+.pz.done{border-color:var(--good)}
+.pz .k{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:900;font-size:22px;background:linear-gradient(180deg,var(--sky),var(--blue));flex:none}
+.pz.done .k{background:linear-gradient(180deg,#34D399,var(--good2))}
+.pz .t{text-align:left;line-height:1.15}
+.pz .t b{display:block;font-size:14px;font-weight:700}
+.pz .t i{display:block;font-style:normal;font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.5px}
+.kb{display:grid;grid-template-columns:repeat(13,34px);gap:5px}
+.kb button{
+  width:34px;height:32px;border-radius:7px;border:1.5px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);
+  color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;cursor:pointer;transition:.15s;
+}
+.kb button:hover{background:rgba(0,174,239,.3);border-color:var(--sky)}
+.kb button.g{background:var(--good);border-color:var(--good);color:#fff}
+.kb button.r{background:var(--bad);border-color:var(--bad);color:#fff}
+.kb button:disabled{cursor:default;opacity:.9}
+.actions{display:flex;flex-direction:column;gap:6px;margin-left:auto}
+.btn{
+  padding:8px 14px;border-radius:9px;border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;
+  font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;cursor:pointer;transition:.15s;white-space:nowrap;text-align:left;
+}
+.btn:hover{background:rgba(0,174,239,.25);border-color:var(--sky)}
+.btn.warn:hover{background:rgba(229,72,77,.3);border-color:var(--bad)}
+.btn kbd{float:right;margin-left:12px;font-family:inherit;font-size:11px;padding:1px 6px;border-radius:5px;background:rgba(255,255,255,.14);color:rgba(255,255,255,.8)}
+.hint{position:absolute;right:26px;bottom:6px;font-size:12px;color:rgba(255,255,255,.4);letter-spacing:.5px;z-index:5}
+.hint.hidden{opacity:0}
+
+/* ---------- win overlay ---------- */
+.win{
+  position:absolute;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(ellipse at center,rgba(10,37,64,.55),rgba(6,26,48,.9));
+  opacity:0;pointer-events:none;transition:opacity .4s;
+}
+.win.show{opacity:1;pointer-events:auto}
+.win .card{
+  text-align:center;padding:56px 90px;border-radius:32px;
+  background:linear-gradient(180deg,rgba(10,37,64,.96),rgba(6,26,48,.96));
+  border:4px solid var(--good);box-shadow:0 0 90px rgba(18,183,106,.55),0 40px 100px rgba(0,0,0,.6);
+  transform:scale(.85);transition:transform .45s cubic-bezier(.2,.9,.3,1.3);
+}
+.win.show .card{transform:scale(1)}
+.win .big{
+  width:150px;height:150px;border-radius:50%;margin:0 auto 22px;display:flex;align-items:center;justify-content:center;
+  font-family:'Montserrat',sans-serif;font-weight:900;font-size:96px;color:#fff;
+  background:linear-gradient(180deg,#34D399,var(--good2));box-shadow:0 0 50px rgba(18,183,106,.9);
+}
+.win .lbl{font-size:16px;letter-spacing:6px;text-transform:uppercase;color:rgba(255,255,255,.6);font-weight:700}
+.win h2{font-family:'Montserrat',sans-serif;font-weight:900;font-size:64px;line-height:1.1;margin:10px 0 18px;color:#fff}
+.win p{font-size:20px;color:rgba(255,255,255,.7);font-weight:500}
+.confetti{position:absolute;top:-20px;width:14px;height:20px;border-radius:3px;opacity:.95;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(1140px) rotate(720deg);opacity:.6}}
+</style>
+</head>
+<body>
+<div id="viewport">
+<div id="stage">
+  <div class="floor"></div>
+  <div class="side-panel l"><div><span>Bigger</span><span>Brighter</span><span>Together</span><em></em></div></div>
+  <div class="side-panel r"><div><span>People</span><span>Trust</span><span>Results</span><em></em></div></div>
+
+  <header>
+    <div class="brand">PropNex<small>MALAYSIA</small></div>
+    <h1>PropNex <b>Core Value</b></h1>
+  </header>
+
+  <div class="board-wrap">
+    <div class="board" id="board">
+      <div class="grid" id="grid"></div>
+    </div>
+  </div>
+
+  <div class="pill-wrap">
+    <div class="pill" id="pill">
+      <div class="key" id="pillKey">?</div>
+      <div class="bar"></div>
+      <div class="msg" id="pillMsg">Guess the Core Value</div>
+      <div class="sub" id="pillSub">SELECT A VALUE TO START</div>
+    </div>
+  </div>
+
+  <!-- HOST CONTROL PANEL (press Shift+H to hide/show) -->
+  <div class="host" id="host">
+    <div class="grp">
+      <div class="lab">Host · Pick a Core Value</div>
+      <div class="row" id="pzRow"></div>
+    </div>
+    <div class="grp">
+      <div class="lab">Letters (type on keyboard or click)</div>
+      <div class="kb" id="kb"></div>
+    </div>
+    <div class="actions">
+      <button class="btn" id="btnReveal">Reveal Answer <kbd>Ctrl + Enter</kbd></button>
+      <button class="btn warn" id="btnReset">Reset This Value <kbd>Ctrl + Backspace</kbd></button>
+      <button class="btn" id="btnFull">Fullscreen <kbd>Shift + F</kbd></button>
+      <button class="btn" id="btnSound">Sound: On <kbd>Shift + M</kbd></button>
+    </div>
+  </div>
+  <div class="hint" id="hint">Press <b>Shift + H</b> to hide / show the host panel &nbsp;·&nbsp; <b>1–4</b> select a value</div>
+
+  <div class="win" id="win">
+    <div class="card">
+      <div class="big" id="winKey">C</div>
+      <div class="lbl">Core Value Revealed</div>
+      <h2 id="winTitle">Continuous Self Improvement</h2>
+      <p>Press <b>Esc</b> or click anywhere to continue</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+/* ============================================================
+   PUZZLES — letter counts are computed from these strings,
+   so the number of white tiles always matches the answer.
+   ============================================================ */
+const PUZZLES = [
+  { key:'C', title:'Continuous Self Improvement',  answer:'CONTINUOUS SELF IMPROVEMENT' },
+  { key:'A', title:'Autonomy & Entrepreneurship',  answer:'AUTONOMY & ENTREPRENEURSHIP' },
+  { key:'R', title:'Respect & Concern',            answer:'RESPECT & CONCERN' },
+  { key:'E', title:'Ethic, Honesty & Integrity',   answer:'ETHIC, HONESTY & INTEGRITY' },
+];
+const COLS = 16, ROWS = 4;
+const isLetter = ch => /^[A-Z]$/.test(ch);
+
+/* Word-wrap an answer onto the board (max 16 per row), centred */
+function layout(answer){
+  const words = answer.split(' ');
+  const lines = [];
+  let cur = '';
+  for (const w of words){
+    if (!cur) cur = w;
+    else if ((cur + ' ' + w).length <= COLS) cur += ' ' + w;
+    else { lines.push(cur); cur = w; }
+  }
+  if (cur) lines.push(cur);
+  const top = Math.floor((ROWS - lines.length) / 2);
+  const cells = {};                     // index -> char
+  lines.forEach((line, li) => {
+    const left = Math.floor((COLS - line.length) / 2);
+    [...line].forEach((ch, ci) => {
+      if (ch !== ' ') cells[(top + li) * COLS + left + ci] = ch;
+    });
+  });
+  return cells;
+}
+
+/* Per-puzzle state so the host can jump between values freely */
+const state = PUZZLES.map(p => ({ guessed:new Set(), solved:false, revealed:false }));
+let cur = -1;                 // index of the active puzzle
+let sound = true;
+let busy = false;
+
+const $ = id => document.getElementById(id);
+const grid = $('grid'), board = $('board'), pill = $('pill'), pillKey = $('pillKey'), pillMsg = $('pillMsg'), pillSub = $('pillSub');
+
+/* ---------- build the 16x4 board ---------- */
+const tiles = [];
+for (let i = 0; i < COLS * ROWS; i++){
+  const t = document.createElement('div');
+  t.className = 'tile';
+  t.innerHTML = '<div class="inner"><div class="face front"></div><div class="face back"></div></div>';
+  grid.appendChild(t);
+  tiles.push(t);
+}
+
+/* ---------- host panel: puzzle buttons + letter keyboard ---------- */
+const pzRow = $('pzRow');
+PUZZLES.forEach((p, i) => {
+  const letters = [...p.answer].filter(isLetter).length;
+  const b = document.createElement('button');
+  b.className = 'pz'; b.dataset.i = i;
+  b.innerHTML = `<div class="k">${p.key}</div><div class="t"><b>${p.title}</b><i>${letters} letters</i></div>`;
+  b.onclick = () => selectPuzzle(i);
+  pzRow.appendChild(b);
+});
+const kb = $('kb');
+for (let c = 65; c <= 90; c++){
+  const L = String.fromCharCode(c);
+  const b = document.createElement('button');
+  b.textContent = L; b.dataset.l = L;
+  b.onclick = () => guess(L);
+  kb.appendChild(b);
+}
+
+function refreshPanel(){
+  [...pzRow.children].forEach((b, i) => {
+    b.classList.toggle('active', i === cur);
+    b.classList.toggle('done', state[i].solved);
+  });
+  [...kb.children].forEach(b => {
+    b.className = ''; b.disabled = false;
+    if (cur < 0) { b.disabled = true; return; }
+    const st = state[cur];
+    if (st.guessed.has(b.dataset.l)){
+      b.disabled = true;
+      b.className = PUZZLES[cur].answer.includes(b.dataset.l) ? 'g' : 'r';
+    }
+    if (st.solved) b.disabled = true;
+  });
+}
+
+/* ---------- render a puzzle onto the board ---------- */
+function renderBoard(){
+  tiles.forEach(t => {
+    t.className = 'tile';
+    t.querySelector('.back').textContent = '';
+  });
+  if (cur < 0) return;
+  const p = PUZZLES[cur], st = state[cur];
+  const cells = layout(p.answer);
+  for (const [idx, ch] of Object.entries(cells)){
+    const t = tiles[idx], back = t.querySelector('.back');
+    back.textContent = ch;
+    if (isLetter(ch)){
+      t.classList.add('blank');
+      if (st.guessed.has(ch) || st.revealed) t.classList.add('flipped');
+    } else {
+      t.classList.add('sym', 'flipped');        // & and , are shown from the start
+    }
+  }
+}
+
+function setPill(key, msg, sub, tone){
+  pillKey.textContent = key;
+  pillMsg.textContent = msg;
+  pillSub.textContent = sub;
+  pill.classList.remove('good', 'bad', 'bump');
+  void pill.offsetWidth;
+  if (tone) pill.classList.add(tone);
+  pill.classList.add('bump');
+}
+
+function wordPattern(answer){
+  return answer.split(' ').map(w => [...w].filter(isLetter).length).filter(n => n > 0).join(' · ');
+}
+
+function selectPuzzle(i){
+  if (busy) return;
+  cur = i;
+  board.classList.remove('good', 'bad');
+  renderBoard();
+  refreshPanel();
+  const p = PUZZLES[i], st = state[i];
+  const total = [...p.answer].filter(isLetter).length;
+  if (st.solved) setPill(p.key, p.title, 'SOLVED', 'good');
+  else setPill(p.key, 'Guess the Core Value', `${total} LETTERS · ${wordPattern(p.answer)}`, null);
+}
+
+/* ---------- the guess ---------- */
+function guess(L){
+  if (busy) return;
+  if (cur < 0){ setPill('?', 'Pick a Core Value first', 'HOST: CHOOSE C / A / R / E BELOW', 'bad'); return; }
+  const p = PUZZLES[cur], st = state[cur];
+  if (st.solved) return;
+  if (st.guessed.has(L)){ setPill(L, 'Already guessed', 'TRY ANOTHER LETTER', null); beep('dup'); return; }
+  st.guessed.add(L);
+
+  const cells = layout(p.answer);
+  const hits = Object.entries(cells).filter(([idx, ch]) => ch === L).map(([idx]) => tiles[idx]);
+  const total = [...p.answer].filter(isLetter).length;
+  const found = [...p.answer].filter(ch => isLetter(ch) && st.guessed.has(ch)).length;
+
+  if (hits.length){
+    busy = true;
+    board.classList.remove('bad'); board.classList.add('good');
+    setPill(L, `Yes! ${hits.length} × ${L}`, `${found} / ${total} LETTERS FOUND`, 'good');
+    beep('good');
+    hits.forEach((t, n) => {
+      setTimeout(() => { t.classList.add('flipped', 'hit'); beep('flip'); }, 220 * n);
+      setTimeout(() => t.classList.remove('hit'), 220 * n + 1700);
+    });
+    const done = 220 * hits.length + 500;
+    setTimeout(() => {
+      busy = false;
+      board.classList.remove('good');
+      refreshPanel();
+      if (found === total) solve();
+    }, done);
+  } else {
+    board.classList.remove('good'); board.classList.add('bad');
+    setPill(L, `No ${L} in this value`, `${found} / ${total} LETTERS FOUND`, 'bad');
+    beep('bad');
+    setTimeout(() => board.classList.remove('bad'), 700);
+  }
+  refreshPanel();
+}
+
+function solve(){
+  const p = PUZZLES[cur], st = state[cur];
+  st.solved = true;
+  refreshPanel();
+  setPill(p.key, p.title, 'SOLVED', 'good');
+  $('winKey').textContent = p.key;
+  $('winTitle').textContent = p.title;
+  $('win').classList.add('show');
+  confetti();
+  fanfare();
+}
+
+function revealAll(){
+  if (cur < 0 || busy) return;
+  const p = PUZZLES[cur], st = state[cur];
+  if (st.solved) return;
+  st.revealed = true;
+  const cells = layout(p.answer);
+  const pending = Object.entries(cells).filter(([idx, ch]) => isLetter(ch) && !st.guessed.has(ch)).map(([idx]) => tiles[idx]);
+  busy = true;
+  pending.forEach((t, n) => setTimeout(() => { t.classList.add('flipped'); beep('flip'); }, 90 * n));
+  setTimeout(() => {
+    busy = false;
+    st.solved = true;
+    refreshPanel();
+    setPill(p.key, p.title, 'ANSWER REVEALED', null);
+  }, 90 * pending.length + 400);
+}
+
+function resetCurrent(){
+  if (cur < 0 || busy) return;
+  state[cur] = { guessed:new Set(), solved:false, revealed:false };
+  selectPuzzle(cur);
+}
+
+/* ---------- celebration ---------- */
+function confetti(){
+  const stage = $('stage');
+  const colors = ['#00AEEF', '#0070E0', '#12B76A', '#FCD34D', '#FFFFFF', '#4FC7B2'];
+  for (let i = 0; i < 110; i++){
+    const c = document.createElement('div');
+    c.className = 'confetti';
+    c.style.left = Math.random() * 1920 + 'px';
+    c.style.background = colors[i % colors.length];
+    c.style.animationDuration = (2.4 + Math.random() * 2) + 's';
+    c.style.animationDelay = (Math.random() * .8) + 's';
+    c.style.transform = `rotate(${Math.random() * 360}deg)`;
+    stage.appendChild(c);
+    setTimeout(() => c.remove(), 5500);
+  }
+}
+
+/* ---------- tiny built-in sounds (no files needed) ---------- */
+let actx;
+function tone(freq, dur, type = 'sine', vol = .18, when = 0){
+  if (!sound) return;
+  try{
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    const o = actx.createOscillator(), g = actx.createGain();
+    o.type = type; o.frequency.value = freq;
+    g.gain.setValueAtTime(0, actx.currentTime + when);
+    g.gain.linearRampToValueAtTime(vol, actx.currentTime + when + .01);
+    g.gain.exponentialRampToValueAtTime(.0001, actx.currentTime + when + dur);
+    o.connect(g); g.connect(actx.destination);
+    o.start(actx.currentTime + when); o.stop(actx.currentTime + when + dur + .05);
+  }catch(e){}
+}
+function beep(kind){
+  if (kind === 'good'){ tone(660, .18); tone(880, .25, 'sine', .18, .12); }
+  else if (kind === 'bad'){ tone(220, .35, 'sawtooth', .12); tone(160, .4, 'sawtooth', .12, .08); }
+  else if (kind === 'flip'){ tone(1200, .08, 'triangle', .08); }
+  else if (kind === 'dup'){ tone(400, .12, 'square', .06); }
+}
+function fanfare(){ [523, 659, 784, 1046].forEach((f, i) => tone(f, .35, 'triangle', .16, i * .13)); tone(1318, .8, 'triangle', .16, .55); }
+
+/* ---------- controls ---------- */
+$('btnReveal').onclick = revealAll;
+$('btnReset').onclick  = resetCurrent;
+$('btnFull').onclick   = toggleFull;
+$('btnSound').onclick  = toggleSound;
+$('win').onclick = () => $('win').classList.remove('show');
+
+function toggleFull(){
+  if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+  else document.exitFullscreen?.();
+}
+function toggleSound(){ sound = !sound; $('btnSound').innerHTML = `Sound: ${sound ? "On" : "Off"} <kbd>Shift + M</kbd>`; }
+function toggleHost(){ $('host').classList.toggle('hidden'); $('hint').classList.toggle('hidden'); }
+
+document.addEventListener('keydown', e => {
+  if (e.metaKey || e.altKey) return;
+  const k = e.key;
+  if (k === 'Escape'){ $('win').classList.remove('show'); return; }
+  if (e.ctrlKey && k === 'Enter'){ e.preventDefault(); revealAll(); return; }
+  if (e.ctrlKey && k === 'Backspace'){ e.preventDefault(); resetCurrent(); return; }
+  if (e.ctrlKey) return;
+  if (/^[1-4]$/.test(k)){ selectPuzzle(+k - 1); return; }
+  if (/^[a-zA-Z]$/.test(k)){
+    const L = k.toUpperCase();
+    if (L === 'H' && e.shiftKey){ toggleHost(); return; }
+    if (L === 'F' && e.shiftKey){ toggleFull(); return; }
+    if (L === 'M' && e.shiftKey){ toggleSound(); return; }
+    if ($('win').classList.contains('show')) { $('win').classList.remove('show'); return; }
+    guess(L);
+  }
+});
+
+/* ---------- scale the 1920x1080 stage to fit the screen (keeps 16:9) ---------- */
+function fit(){
+  const s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+  $('stage').style.transform = `scale(${s})`;
+}
+window.addEventListener('resize', fit);
+fit();
+renderBoard();
+refreshPanel();
+</script>
+</body>
+</html>
